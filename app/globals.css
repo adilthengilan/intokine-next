@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Updated color palette to red and cyan for light theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 15%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 15%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 15%;
+    --primary: 239 84% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 188 94% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 85%;
+    --input: 0 0% 92%;
+    --ring: 239 84% 55%;
+    --chart-1: 239 84% 55%;
+    --chart-2: 188 94% 50%;
+    --chart-3: 16 100% 50%;
+    --chart-4: 0 0% 70%;
+    --chart-5: 0 0% 80%;
+    --sidebar: 0 0% 96%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 239 84% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 188 94% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 239 84% 55%;
+    --font-sans: Montserrat, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: Fira Code, monospace;
+    --radius: 0.675rem;
+    --shadow-2xs: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.08);
+    --shadow-xs: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.12);
+    --shadow-sm: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 1px 2px -1px hsl(239 84% 55% / 0.12);
+    --shadow: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 1px 2px -1px hsl(239 84% 55% / 0.12);
+    --shadow-md: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 2px 4px -1px hsl(239 84% 55% / 0.12);
+    --shadow-lg: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 4px 6px -1px hsl(239 84% 55% / 0.12);
+    --shadow-xl: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 8px 10px -1px hsl(239 84% 55% / 0.12);
+    --shadow-2xl: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.24);
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+
+  .dark {
+    --background: 0 0% 10.1961%;
+    --foreground: 0 0% 85.0980%;
+    --card: 0 0% 12.5490%;
+    --card-foreground: 0 0% 85.0980%;
+    --popover: 0 0% 12.5490%;
+    --popover-foreground: 0 0% 85.0980%;
+    --primary: 239 84% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 188 94% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 16.4706%;
+    --muted-foreground: 0 0% 50.1961%;
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20.7843%;
+    --input: 0 0% 18.8235%;
+    --ring: 239 84% 55%;
+    --chart-1: 239 84% 55%;
+    --chart-2: 188 94% 50%;
+    --chart-3: 16 100% 50%;
+    --chart-4: 0 0% 34.5098%;
+    --chart-5: 0 0% 25.0980%;
+    --sidebar: 0 0% 12.1569%;
+    --sidebar-foreground: 0 0% 85.0980%;
+    --sidebar-primary: 239 84% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 188 94% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20.7843%;
+    --sidebar-ring: 239 84% 55%;
+    --font-sans: Inter, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: Fira Code, monospace;
+    --radius: 0.675rem;
+    --shadow-2xs: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.16);
+    --shadow-xs: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.16);
+    --shadow-sm: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.32), 4.5px 1px 2px -1px hsl(0 0% 20% / 0.32);
+    --shadow: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.32), 4.5px 1px 2px -1px hsl(0 0% 20% / 0.32);
+    --shadow-md: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.32), 4.5px 2px 4px -1px hsl(0 0% 20% / 0.32);
+    --shadow-lg: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.32), 4.5px 4px 6px -1px hsl(0 0% 20% / 0.32);
+    --shadow-xl: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.32), 4.5px 8px 10px -1px hsl(0 0% 20% / 0.32);
+    --shadow-2xl: 4.5px 4.5px 0px 0px hsl(0 0% 20% / 0.8);
+  }
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: var(--font-sans);
+}
+
+/* Subtle Grid Background Pattern */
+.bg-grid-subtle {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.09) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 0;
+}
+
+/* Add a subtle dot pattern overlay for extra depth */
+.bg-grid-subtle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20px 20px, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Added gradient accent for branding sections */
+.text-gradient-red-cyan {
+  background: linear-gradient(135deg, hsl(239, 84%, 55%) 0%, hsl(188, 94%, 50%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Added keyframe animations for particle joining and flying effects */
+@keyframes particleJoin {
+  0% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes flyingItem {
+  0% {
+    opacity: 0;
+    transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rotation));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+}
+
+.animate-particle-join {
+  animation: particleJoin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-flying-item {
+  animation: flyingItem 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Glass liquid effect styles */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-effect:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Smooth floating animation */
+@keyframes floatSmooth {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-smooth {
+  animation: floatSmooth 3s ease-in-out infinite;
+}
