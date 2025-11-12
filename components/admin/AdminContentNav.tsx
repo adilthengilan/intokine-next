@@ -7,7 +7,7 @@ import {
   Image as ImageIcon,
   Users,
   ListChecks,
-  History,
+  MapPinned,
   MessageSquare,
   LayoutDashboard,
 } from "lucide-react";
@@ -26,6 +26,7 @@ const SECTIONS = [
     label: "Testimonials",
     icon: MessageSquare,
   },
+  { href: "/admin/content/locations", label: "Locations", icon: MapPinned },
 ];
 
 export default function AdminContentNav() {
