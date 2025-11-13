@@ -14,6 +14,7 @@ import { AppPromotionSection } from "@/components/app-promotion-section";
 import { FeaturesSection } from "@/components/features-section";
 import { PremiumTestimonials } from "@/components/premium-testimonials";
 import { SportsTrackingSection } from "@/components/sports-tracking-section";
+import LocationsSection from "@/components/locations-section";
 
 export default function Page() {
   const missionStatement =
@@ -56,6 +57,9 @@ export default function Page() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Location Section */}
+      <LocationsSection />
 
       {/* App Branding Section */}
       <AppBrandingSection />
