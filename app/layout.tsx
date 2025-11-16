@@ -1,38 +1,65 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next";
+import { Raleway } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
+/* ----------------------------
+   FONT CONFIGURATION
+-----------------------------*/
+
+// Google Font: Raleway (Light + SemiBold)
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["300", "600"], // 300 = Light, 600 = SemiBold
+  variable: "--font-raleway",
+});
+
+// Local Font: Swiss721BT Bold Condensed
+// Place your font file inside /public/fonts/Swiss721BT.woff2
+const swiss721 = {
+  variable: "--font-swiss",
+  style: { fontFamily: "Swiss721BT, sans-serif" },
+};
+
+/* ----------------------------
+   SITE METADATA
+-----------------------------*/
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: '/icon.svg',
-  },
-}
+  title: "Intokine",
+  description: "For your body, mind, and lifestyle",
+  icons: { icon: "./images/favIcon.png" },
+};
 
+/* ----------------------------
+   ROOT LAYOUT
+-----------------------------*/
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${raleway.variable} ${swiss721.variable}`}
+    >
       <head>
         <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-}
+          /* Local Swiss721BT Font */
+          @font-face {
+            font-family: 'Swiss721BT';
+            src: url('/fonts/Swiss721BT.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+          }
         `}</style>
       </head>
-      <body>
+
+      <body className="font-[var(--font-raleway)] bg-background text-foreground antialiased">
         {children}
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

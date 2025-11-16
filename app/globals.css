@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
 
 @layer base {
   :root {
@@ -37,7 +38,9 @@
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 85%;
     --sidebar-ring: 239 84% 55%;
-    --font-sans: Montserrat, sans-serif;
+    --font-header: 'Swiss721BT-BoldCondensed', 'Arial Narrow', sans-serif;
+    --font-subheader: 'Railway', sans-serif;
+    --font-sans: 'Railway', sans-serif;
     --font-serif: Georgia, serif;
     --font-mono: Fira Code, monospace;
     --radius: 0.675rem;
@@ -86,7 +89,9 @@
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 0 0% 20.7843%;
     --sidebar-ring: 239 84% 55%;
-    --font-sans: Inter, sans-serif;
+    --font-header: 'Swiss721BT-BoldCondensed', 'Arial Narrow', sans-serif;
+    --font-subheader: 'Railway', sans-serif;
+    --font-sans: 'Railway', sans-serif;
     --font-serif: Georgia, serif;
     --font-mono: Fira Code, monospace;
     --radius: 0.675rem;
@@ -109,6 +114,43 @@ body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
   font-family: var(--font-sans);
+  font-weight: 300; /* Railway Light for body text */
+}
+
+/* Typography Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-header);
+  font-weight: 700; /* Bold */
+  letter-spacing: -0.02em;
+}
+
+/* Subheader styles */
+.subheader,
+.text-subheader {
+  font-family: var(--font-subheader);
+  font-weight: 600; /* SemiBold */
+}
+
+/* Paragraph styles */
+p {
+  font-family: var(--font-sans);
+  font-weight: 300; /* Light */
+}
+
+/* Utility classes for font families */
+.font-header {
+  font-family: var(--font-header);
+  font-weight: 700;
+}
+
+.font-subheader {
+  font-family: var(--font-subheader);
+  font-weight: 600;
+}
+
+.font-body-light {
+  font-family: var(--font-sans);
+  font-weight: 300;
 }
 
 /* Subtle Grid Background Pattern */

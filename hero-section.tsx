@@ -3,6 +3,7 @@
 import { LiquidButton } from "@/components/ui/liquid-glass-button"
 import { Menu, ChevronLeft, ChevronRight, X } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image";
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -59,7 +60,23 @@ export default function HeroSection() {
       {/* Navigation */}
       <nav className="relative z-20 flex items-center justify-between p-6 md:p-8">
         {/* Logo/Brand */}
-        <div className="text-white font-bold text-xl tracking-wider">WADADA</div>
+<div className="flex items-center gap-2">
+  <Image
+    src="/images/intokine_logo.png"
+    alt="Intokine Logo"
+    width={600}       // fallback width
+    height={300}      // fallback height
+    className="
+      object-contain
+      w-28 h-10       /* mobile size */
+      sm:w-36 sm:h-12 /* small screens */
+      md:w-48 md:h-16 /* tablets */
+      lg:w-64 lg:h-20 /* desktop */
+      xl:w-72 xl:h-24 /* large desktop */
+    "
+    priority
+  />
+</div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
@@ -106,14 +123,22 @@ export default function HeroSection() {
       <div className="relative z-10 flex h-full items-center justify-center px-6">
         <div className="text-center text-white max-w-4xl">
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider mb-4 leading-none">
+          {/* <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider mb-4 leading-none">
             WADADA
             <br />
             RUN CLUB
-          </h1>
+          </h1> */}
+           <Image
+    src="./images/intokine_full_name_logo.png"        // 👈 put your logo file inside the /public folder (e.g., public/logo.png)
+    alt="Intokine Logo"
+    width={280}             // adjust size as needed
+    height={10}
+    className="object-contain"
+    priority
+  />
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl font-light tracking-wide mb-8 text-gray-200">Global Running Community</p>
+          <p className="text-xl md:text-2xl font-light tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</p>
 
           {/* CTA Button - Now using LiquidButton */}
           <LiquidButton

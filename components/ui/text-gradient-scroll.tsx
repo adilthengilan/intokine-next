@@ -45,21 +45,35 @@ function useGradientScroll() {
   return context
 }
 
-function TextGradientScroll({ text, className, type = "letter", textOpacity = "soft" }: TextGradientScrollType) {
-  const ref = useRef<HTMLParagraphElement>(null)
+ function TextGradientScroll({
+  text,
+  className,
+  type = "letter",
+  textOpacity = "soft",
+}: TextGradientScrollType) {
+  const ref = useRef<HTMLParagraphElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start center", "end center"],
-  })
+  });
 
-  const words = text.split(" ")
+  const words = text.split(" ");
 
   return (
     <TextGradientScrollContext.Provider value={{ textOpacity, type }}>
-      <p ref={ref} className={cn("relative flex m-0 flex-wrap", className)}>
+      <p
+        ref={ref}
+        className={cn("relative flex m-0 flex-wrap", className)}
+        style={{
+          fontFamily: "Raleway, sans-serif", // Raleway font
+          fontWeight: 600,                   // SemiBold
+        }}
+      >
         {words.map((word, i) => {
-          const start = i / words.length
-          const end = start + 1 / words.length
+          const start = i / words.length;
+          const end = start + 1 / words.length;
+
           return type === "word" ? (
             <Word key={i} progress={scrollYProgress} range={[start, end]}>
               {word}
@@ -68,13 +82,12 @@ function TextGradientScroll({ text, className, type = "letter", textOpacity = "s
             <Letter key={i} progress={scrollYProgress} range={[start, end]}>
               {word}
             </Letter>
-          )
+          );
         })}
       </p>
     </TextGradientScrollContext.Provider>
-  )
+  );
 }
-
 const Word = ({ children, progress, range }: WordType) => {
   const opacity = useTransform(progress, range, [0, 1])
   return (

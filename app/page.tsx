@@ -18,40 +18,196 @@ import LocationsSection from "@/components/locations-section";
 
 export default function Page() {
   const missionStatement =
-    "At Wadada Run Club, we believe movement isn't an option, it's a lifestyle. Born from the vibrant spirit of Jamaica, we unite runners from every corner of the globe who share our passion for pushing boundaries. Whether you're chasing sunrise through Kingston streets or conquering mountain trails, we're here to fuel your journey. Our community thrives on the rhythm of footsteps, the power of perseverance, and the joy of shared victories. Join us as we run not just for fitness, but for freedom, friendship, and the pure love of movement.";
+    "Founded on the belief that true wellness comes from balance — Intokine bridges the worlds of performance training and human development.We blend ancient movement practices with modern training science to build not only stronger bodies but also resilient, adaptable, and self-aware individuals.";
 
-  const timelineEntries = [
-    {
-      id: 1,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-      alt: "Woman runner in artistic motion blur",
-      title: "Every Step Counts",
-      description:
-        "From your first jog around the block to your hundredth marathon, every runner has a story. At Wadada, we celebrate beginners who are just lacing up their shoes for the first time. Your pace doesn't matter—your passion does. What are you waiting for?",
-      layout: "left" as const,
-    },
-    {
-      id: 2,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-      alt: "Male runner with determination and focus",
-      title: "Find Your Rhythm",
-      description:
-        "Whether you're chasing personal records or simply chasing the sunrise, our community embraces every type of runner. From speed demons to mindful joggers, from trail blazers to track stars—there's a place for you here. The only question is: what are you waiting for?",
-      layout: "right" as const,
-    },
-    {
-      id: 3,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-      alt: "Runner in dynamic motion showing strength and grace",
-      title: "Join the Movement",
-      description:
-        "Running isn't just about the miles—it's about the moments. The early morning conversations, the shared struggles, the collective victories. At Wadada Run Club, you're not just joining a group, you're joining a family. So lace up, step out, and discover what you're truly capable of. Seriously, what are you waiting for?",
-      layout: "left" as const,
-    },
-  ];
+ const timelineEntries = [
+  {
+    id: 1,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+    alt: "Zaki – The Intokine Wellness System",
+    title: "ZAKI – The Intokine Wellness System",
+    description: `
+Zaki is our flagship holistic wellness program — a complete journey of physical, mental, and emotional transformation.
+
+Combining fitness, mindfulness, nutrition, and mindset coaching, Zaki helps you reconnect with your body, reset your habits, and restore balance in your everyday life.
+
+Includes:
+• Physical fitness training & mobility practice
+• Personalized nutrition & recovery guidance
+• Mental health and emotional resilience sessions
+• Lifestyle structure & goal alignment support
+
+Outcome: A grounded, stronger, and more self-aware version of you — living with clarity and purpose.
+    `,
+    layout: "left" as const,
+  },
+
+  {
+    id: 2,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+    alt: "Calisthenics Training",
+    title: "Calisthenics Training",
+    description: `
+Master your own bodyweight through strength, control, and creativity.
+
+Our Calisthenics Program builds functional strength, mobility, and coordination — from fundamentals to advanced bodyweight skills.
+
+Focus Areas:
+• Progressive bodyweight strength
+• Core stability and endurance
+• Movement flow and balance
+
+Outcome: Power, precision, and full control over your body.
+    `,
+    layout: "right" as const,
+  },
+
+  {
+    id: 3,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+    alt: "Martial Arts",
+    title: "Martial Arts",
+    description: `
+Discipline the mind, condition the body, and find your flow through martial practice.
+
+We blend traditional and modern martial arts — including kickboxing, kung fu, and combat movement — to develop both physical resilience and mental sharpness.
+
+Focus Areas:
+• Striking, defense, and movement flow
+• Mind-body coordination
+• Emotional control and confidence
+
+Outcome: A warrior mindset built on discipline, focus, and respect.
+    `,
+    layout: "left" as const,
+  },
+
+  {
+    id: 4,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+    alt: "Animal Flow",
+    title: "Animal Flow",
+    description: `
+Animal Flow is a ground-based bodyweight movement system that blends quadrupedal locomotion, mobility drills, positional isometrics, and fluid transitions to build strength, stability, and body control.
+
+It develops full-body coordination and proprioception.
+
+• Builds core stability and hip/shoulder resilience through load-bearing positions.
+• Improves mobility and joint health in functional ranges.
+• Trains movement efficiency and fluidity rather than isolated muscles.
+    `,
+    layout: "right" as const,
+  },
+
+  {
+    id: 5,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+    alt: "Functional Movement Training",
+    title: "Functional Movement Training",
+    description: `
+Move better to live better.
+
+This program focuses on improving your everyday movement efficiency, posture, and joint stability — blending training science with human movement principles.
+
+Focus Areas:
+• Mobility, balance, and coordination
+• Injury prevention & posture correction
+• Real-world performance movement
+
+Outcome: Enhanced functionality and freedom of motion in all aspects of life.
+    `,
+    layout: "left" as const,
+  },
+
+  {
+    id: 6,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+    alt: "Strength & Conditioning",
+    title: "Strength & Conditioning",
+    description: `
+Engineered for athletes and everyday performers alike.
+
+Our Strength & Conditioning Program builds endurance, power, and athletic capacity — the foundation of high-level physical performance.
+
+Focus Areas:
+• Power development and hypertrophy
+• Endurance and conditioning systems
+• Recovery optimization
+
+Outcome: Peak strength, improved stamina, and high-performance capability.
+    `,
+    layout: "right" as const,
+  },
+
+  {
+    id: 7,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+    alt: "Mental Health Support",
+    title: "Mental Health Support",
+    description: `
+True strength starts within.
+
+Our Mental Health Support program integrates emotional awareness, mindset training, and stress management to help you build resilience, focus, and peace of mind.
+
+Focus Areas:
+• Emotional intelligence & mindfulness
+• Stress reduction and self-awareness
+• Goal alignment and motivation systems
+
+Outcome: A calmer, more focused, and mentally balanced you.
+    `,
+    layout: "left" as const,
+  },
+
+  {
+    id: 8,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+    alt: "Ventures Development Training",
+    title: "Ventures Development Training",
+    description: `
+Train not just for the body — but for life.
+
+This Intokine module develops leadership, creativity, and performance in real-world ventures — ideal for athletes, entrepreneurs, and community leaders.
+
+Focus Areas:
+• Leadership and purpose-driven growth
+• Teamwork, communication, and innovation
+• Resilience and adaptability
+
+Outcome: A mindset built for progress — professionally and personally.
+    `,
+    layout: "right" as const,
+  },
+
+  {
+    id: 9,
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+    alt: "Nutrition & Lifestyle Coaching",
+    title: "Nutrition & Lifestyle Coaching",
+    description: `
+Fuel your movement with precision.
+
+Our Nutrition Program teaches you how to eat, recover, and live for long-term vitality — no crash diets, just conscious nourishment.
+
+Focus Areas:
+• Personalized nutrition planning
+• Performance-based eating strategies
+• Recovery and lifestyle optimization
+
+Outcome: Sustainable health and energy that supports your training and life goals.
+    `,
+    layout: "left" as const,
+  },
+];
 
   return (
     <div className="min-h-screen bg-white">
@@ -80,22 +236,26 @@ export default function Page() {
           className="container mx-auto px-6 relative z-10"
         >
           <div className="max-w-4xl mx-auto text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: false, margin: "-100px" }}
-              className="text-4xl md:text-6xl font-black tracking-wider mb-12 text-gray-900"
-            >
-              OUR MISSION
-            </motion.h2>
-            <TextGradientScroll
-              text={missionStatement}
-              className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-gray-800"
-              type="word"
-              textOpacity="soft"
-            />
-          </div>
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.1 }}
+    viewport={{ once: false, margin: '-100px' }}
+    className="text-4xl md:text-6xl tracking-wider mb-12 text-gray-900"
+    style={{ fontFamily: 'Swiss721BT Bold Condensed, sans-serif', fontWeight: 700 }}
+  >
+    About Intokine
+  </motion.h2>
+
+  <TextGradientScroll
+    text={missionStatement}
+    className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-gray-800"
+    // style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 600 }}
+    type="word"
+    textOpacity="soft"
+  />
+</div>
+
         </motion.div>
       </section>
 
@@ -117,11 +277,11 @@ export default function Page() {
               className="text-center"
             >
               <h2 className="text-4xl md:text-6xl font-black tracking-wider mb-6 text-gray-900">
-                ALL RUNNERS WELCOME
+                Experiences
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                Every runner has a unique journey. Here are just a few stories
-                from our inclusive community.
+                At Intokine, we don’t just train.
+We redefine how you move, think, and live.
               </p>
             </motion.div>
           </div>
@@ -175,11 +335,11 @@ export default function Page() {
       {/* Smooth Scroll Hero with CTA Overlay */}
       <section id="join" className="relative">
         <SmoothScrollHero
-          scrollHeight={2500}
+          scrollHeight={10000}
           desktopImage="/images/runners-motion-blur.png"
           mobileImage="/images/runners-motion-blur.png"
-          initialClipPercentage={30}
-          finalClipPercentage={70}
+          initialClipPercentage={40}
+          finalClipPercentage={80}
         />
       </section>
       <Chatbot />
