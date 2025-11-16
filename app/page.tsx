@@ -335,14 +335,14 @@ We redefine how you move, think, and live.
       {/* Smooth Scroll Hero with CTA Overlay */}
       <section id="join" className="relative">
         <SmoothScrollHero
-          scrollHeight={10000}
+          scrollHeight={4500}
           desktopImage="/images/runners-motion-blur.png"
           mobileImage="/images/runners-motion-blur.png"
           initialClipPercentage={40}
           finalClipPercentage={80}
         />
       </section>
-      <Chatbot />
+      {/* <Chatbot /> */}
     </div>
   );
 }

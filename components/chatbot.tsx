@@ -133,29 +133,24 @@ export default function Chatbot() {
                               message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted",
                             )}
                           >
-                            <ReactMarkdown
-                              className="text-sm leading-relaxed"
-                              remarkPlugins={[remarkGfm]}
-                              components={{
-                                p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                                ol: ({ node, ...props }) => (
-                                  <ol className="list-decimal list-inside my-2 space-y-1" {...props} />
-                                ),
-                                ul: ({ node, ...props }) => (
-                                  <ul className="list-disc list-inside my-2 space-y-1" {...props} />
-                                ),
-                                a: ({ node, ...props }) => (
-                                  <a
-                                    className="underline hover:text-blue-500"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    {...props}
-                                  />
-                                ),
-                              }}
-                            >
-                              {message.content}
-                            </ReactMarkdown>
+                           {/* import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm"; */}
+
+<ReactMarkdown
+  remarkPlugins={[remarkGfm]}
+  components={{
+    p: ({ node, ...props }) => (
+      <p className="text-sm leading-relaxed mb-2 last:mb-0" {...props} />
+    ),
+    ol: ({ node, ...props }) => (
+      <ol className="list-decimal pl-5 mb-2" {...props} />
+    ),
+    li: ({ node, ...props }) => <li className="mb-1" {...props} />,
+  }}
+>
+  {/* {markdownText} Your markdown string */}
+</ReactMarkdown>
+
                           </div>
                           {message.role === "user" && (
                             <div className="p-2 bg-muted rounded-full">
