@@ -1,16 +1,16 @@
-import * as functions from "firebase-functions";
-import * as express from "express";
+import express from "express";
 import next from "next";
 
-const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev, conf: { distDir: ".next" } });
+const app = next({ dev: process.env.NODE_ENV !== "production" });
 const handle = app.getRequestHandler();
 
-const server = express();
+const server = express(); // ✅ fixed
 
-server.all("*", async (req: express.Request, res: express.Response) => {
+server.all("*", async (req, res) => {
   await app.prepare();
   return handle(req, res);
 });
 
-export const nextApp = functions.https.onRequest(server);
+server.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});

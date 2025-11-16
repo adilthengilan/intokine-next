@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, Variants, Easing } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
 interface Feature {
@@ -44,13 +44,16 @@ const features: Feature[] = [
   },
 ]
 
+// Custom easing array typed as Framer Motion Easing
+const customEase: Easing = [0.16, 1, 0.3, 1]
+
 export function FeaturesSection() {
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: false,
   })
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -60,14 +63,14 @@ export function FeaturesSection() {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
+        ease: customEase,
       },
     },
   }
@@ -92,11 +95,13 @@ export function FeaturesSection() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: customEase }}
           viewport={{ once: false, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">POWERFUL FEATURES</h2>
+          <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">
+            POWERFUL FEATURES
+          </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
             Everything you need to take your running to the next level.
           </p>
@@ -113,7 +118,9 @@ export function FeaturesSection() {
             <motion.div
               key={feature.id}
               variants={itemVariants}
-              className={`group relative ${getSpanClass(feature.span)} rounded-2xl overflow-hidden cursor-pointer`}
+              className={`group relative ${getSpanClass(
+                feature.span
+              )} rounded-2xl overflow-hidden cursor-pointer`}
             >
               {/* Glass Effect Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 backdrop-blur-xl border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300" />

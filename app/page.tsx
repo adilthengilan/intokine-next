@@ -15,6 +15,7 @@ import { FeaturesSection } from "@/components/features-section";
 import { PremiumTestimonials } from "@/components/premium-testimonials";
 import { SportsTrackingSection } from "@/components/sports-tracking-section";
 import LocationsSection from "@/components/locations-section";
+import { prisma } from "@/lib/prisma";
 
 export default function Page() {
   const missionStatement =
