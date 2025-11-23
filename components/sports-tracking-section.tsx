@@ -152,7 +152,7 @@ export function SportsTrackingSection() {
 
             <div className="space-y-6">
               <motion.h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-                The Future of Sports Tracking Today
+                THE FUTURE OF SPORTS TRACKING TODAY
               </motion.h2>
               <motion.p className="text-xl text-gray-600 leading-relaxed font-light">
                 Experience smarter, real-time performance insights with seamless tracking — empowering athletes to take
