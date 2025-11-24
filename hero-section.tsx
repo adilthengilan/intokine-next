@@ -62,7 +62,7 @@ export default function HeroSection() {
         {/* Logo/Brand */}
 <div className="flex items-center gap-2">
   <Image
-    src="/images/intokine_logo.png"
+    src="./publics/images/intokine_logo.png"
     alt="Intokine Logo"
     width={600}       // fallback width
     height={300}      // fallback height
