@@ -34,19 +34,21 @@ export function SportsTrackingSection() {
     },
   }
 
+  // Updated feature cards for Intokine
   const featureCards = [
-    { icon: Activity, text: "Track Performance", description: "Monitor metrics to track progress" },
-    { icon: Zap, text: "Real-Time Insights", description: "Get data instantly during workouts" },
-    { icon: Target, text: "Personalized Goals", description: "Tailored plans based on your stats" },
+    { icon: Activity, text: "Skill Development", description: "Learn and enhance new skills interactively" },
+    { icon: Zap, text: "Smart Course Insights", description: "Track your progress and achievements in real-time" },
+    { icon: Target, text: "Personalized Learning", description: "Courses and guidance tailored to your goals" },
   ]
 
+  // Updated metric cards for Intokine
   const metricCards = [
     {
-      title: "Workout",
+      title: "Courses",
       stats: [
-        { label: "Calories", value: "142", icon: TrendingUp as any },
-        { label: "Distance", value: "8.5km", icon: Target as any },
-        { label: "Duration", value: "32min", icon: Timer as any },
+        { label: "Completed", value: "12", icon: TrendingUp as any },
+        { label: "Ongoing", value: "3", icon: Target as any },
+        { label: "Upcoming", value: "2", icon: Timer as any },
       ],
       position: "top-4 left-4",
       delay: 0.2,
@@ -58,10 +60,10 @@ export function SportsTrackingSection() {
       icon: undefined,
     },
     {
-      title: "Heart Rate",
-      value: "142",
-      unit: "bpm",
-      subtitle: "Optimal Zone",
+      title: "Learning Hours",
+      value: "42",
+      unit: "hrs",
+      subtitle: "This Week",
       position: "top-4 right-4",
       delay: 0.4,
       gradient: "from-pink-500/10 to-red-500/10",
@@ -70,10 +72,10 @@ export function SportsTrackingSection() {
       stats: undefined,
     },
     {
-      title: "Recovery",
+      title: "Skill Progress",
       stats: [
-        { label: "Sleep", value: "8h" },
-        { label: "Readiness", value: "92%" },
+        { label: "Python", value: "80%" },
+        { label: "Design", value: "65%" },
       ],
       position: "bottom-4 left-4",
       delay: 0.6,
@@ -85,10 +87,10 @@ export function SportsTrackingSection() {
       icon: undefined,
     },
     {
-      title: "Nutrition Score",
-      value: "92",
-      unit: "/100",
-      subtitle: "Protein Smoothie",
+      title: "Certifications",
+      value: "5",
+      unit: "",
+      subtitle: "Earned",
       position: "bottom-4 right-4",
       delay: 0.8,
       gradient: "from-green-500/10 to-emerald-500/10",
@@ -155,8 +157,8 @@ export function SportsTrackingSection() {
                 THE FUTURE OF SPORTS TRACKING TODAY
               </motion.h2>
               <motion.p className="text-xl text-gray-600 leading-relaxed font-light">
-                Experience smarter, real-time performance insights with seamless tracking — empowering athletes to take
-                control of their fitness every day.
+                Intokine helps you learn smarter, track your course progress, and achieve your skill goals efficiently with
+                interactive dashboards and real-time insights.
               </motion.p>
             </div>
 
@@ -222,8 +224,8 @@ export function SportsTrackingSection() {
               }}
             >
               <img
-                src="/athlete-running-smartwatch-fitness-tracking.jpg"
-                alt="Athlete checking performance metrics on smartwatch"
+                src="/intokine-learning-dashboard.jpg"
+                alt="Intokine app dashboard for tracking skill development"
                 className="w-full h-full object-cover filter brightness-95"
               />
               {/* Gradient overlay */}

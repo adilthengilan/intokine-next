@@ -127,10 +127,10 @@ export default function AppBrandingSection() {
           </motion.div>
           
           <h2 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-gray-900">
-            WADADA RUN CLUB
+            Intokine
           </h2>
           <p className="text-xl text-gray-700 max-w-2xl mx-auto font-light">
-            Your Complete Running Companion
+            Your Complete Fitness & Wellness Companion
           </p>
         </motion.div>
 

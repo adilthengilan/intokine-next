@@ -92,10 +92,11 @@ export default function RunCategoriesSection() {
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900">
-            RUN CATEGORIES
+            CATEGORIES
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Find the perfect running style for your goals and fitness level
+             Reconnect with your body, mind, and lifestyle — blending fitness, nutrition, martial arts, and mindful practices
+
           </p>
         </motion.div>
 

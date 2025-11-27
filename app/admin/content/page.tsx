@@ -14,14 +14,14 @@ import {
 const cards = [
   {
     href: "/admin/content/branding",
-    title: "Branding Carousel",
+    title: "Services",
     desc: "Manage featured images and titles displayed in the App Branding section.",
     icon: ImageIcon,
     color: "from-purple-500 to-pink-500",
   },
   {
     href: "/admin/content/run-categories",
-    title: "Run Categories",
+    title: "Service Categories",
     desc: "Configure category tiles with icons, images, labels and descriptions.",
     icon: ListChecks,
     color: "from-green-500 to-emerald-500",

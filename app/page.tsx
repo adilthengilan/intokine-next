@@ -316,7 +316,7 @@ We redefine how you move, think, and live.
             viewport={{ once: false, margin: "-100px" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">
+            {/* <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">
               See what our{" "}
               <span className="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
                 RUNNERS
@@ -326,7 +326,7 @@ We redefine how you move, think, and live.
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-12">
               Real stories from real runners who found their stride with Wadada
               Run Club.
-            </p>
+            </p> */}
           </motion.div>
 
           <PremiumTestimonials />

@@ -14,10 +14,10 @@ import {
 
 const SECTIONS = [
   { href: "/admin/content", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/content/branding", label: "Branding", icon: ImageIcon },
+  { href: "/admin/content/branding", label: "Services", icon: ImageIcon },
   {
     href: "/admin/content/run-categories",
-    label: "Run Categories",
+    label: "Service Categories",
     icon: ListChecks,
   },
   { href: "/admin/content/coaches", label: "Coaches", icon: Users },

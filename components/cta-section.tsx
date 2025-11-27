@@ -24,18 +24,20 @@ export default function CTASection() {
         >
           {/* Main CTA Heading */}
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider mb-6 text-gray-900 leading-none">
-            READY TO
+            UNLOCK YOUR
             <br />
             <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
-              RUN WITH US?
+              HIGHEST SELF
             </span>
           </h2>
 
           {/* Supporting Text */}
           <p className="text-xl md:text-2xl lg:text-3xl text-gray-700 mb-12 leading-relaxed font-medium">
-            Join thousands of runners worldwide who've found their tribe,
+            Intokine is a holistic wellness and performance brand that unites
+            movement, mindfulness, and human potential.
             <br className="hidden md:block" />
-            pushed their limits, and discovered what they're truly capable of.
+            Reconnect with your body, sharpen your mind, and transform your life
+            — one intentional step at a time.
           </p>
 
           {/* Stats Grid */}
@@ -52,8 +54,10 @@ export default function CTASection() {
                   <Users className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">50K+</div>
-              <div className="text-sm md:text-base text-gray-600 font-medium">Global Runners</div>
+              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Holistic</div>
+              <div className="text-sm md:text-base text-gray-600 font-medium">
+                Mind–Body Integration
+              </div>
             </div>
 
             <div className="text-center">
@@ -62,8 +66,10 @@ export default function CTASection() {
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">120+</div>
-              <div className="text-sm md:text-base text-gray-600 font-medium">Cities Worldwide</div>
+              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Movement</div>
+              <div className="text-sm md:text-base text-gray-600 font-medium">
+                Fitness & Martial Arts
+              </div>
             </div>
 
             <div className="text-center">
@@ -72,8 +78,10 @@ export default function CTASection() {
                   <Calendar className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">365</div>
-              <div className="text-sm md:text-base text-gray-600 font-medium">Days of Running</div>
+              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Lifestyle</div>
+              <div className="text-sm md:text-base text-gray-600 font-medium">
+                Daily Habit Design
+              </div>
             </div>
 
             <div className="text-center">
@@ -82,8 +90,10 @@ export default function CTASection() {
                   <Trophy className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">10K+</div>
-              <div className="text-sm md:text-base text-gray-600 font-medium">Goals Achieved</div>
+              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Growth</div>
+              <div className="text-sm md:text-base text-gray-600 font-medium">
+                Personal Transformation
+              </div>
             </div>
           </motion.div>
 
@@ -99,7 +109,7 @@ export default function CTASection() {
               size="xxl"
               className="font-bold text-xl tracking-wide px-12 py-4 bg-gray-900 hover:bg-gray-800 text-white border-2 border-gray-900 hover:scale-105 transition-all duration-300"
             >
-              JOIN WADADA NOW
+              JOIN INTOKINE
             </LiquidButton>
           </motion.div>
 
@@ -111,12 +121,14 @@ export default function CTASection() {
             viewport={{ once: true }}
             className="mt-16 pt-8 border-t border-gray-200"
           >
-            <p className="text-sm text-gray-500 mb-4 font-medium">TRUSTED BY RUNNERS WORLDWIDE</p>
+            <p className="text-sm text-gray-500 mb-4 font-medium">
+              DESIGNED FOR THE MODERN HUMAN
+            </p>
             <div className="flex flex-wrap justify-center items-center gap-8 text-gray-400">
-              <span className="text-sm font-semibold">🏃‍♀️ BEGINNER FRIENDLY</span>
-              <span className="text-sm font-semibold">🌍 GLOBAL COMMUNITY</span>
-              <span className="text-sm font-semibold">🏆 PROVEN RESULTS</span>
-              <span className="text-sm font-semibold">💯 FREE TO JOIN</span>
+              <span className="text-sm font-semibold">🧘 MINDFUL LIVING</span>
+              <span className="text-sm font-semibold">🥋 MOVEMENT MASTERY</span>
+              <span className="text-sm font-semibold">🔥 PEAK PERFORMANCE</span>
+              <span className="text-sm font-semibold">🌱 HOLISTIC GROWTH</span>
             </div>
           </motion.div>
         </motion.div>
