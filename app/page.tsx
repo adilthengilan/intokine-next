@@ -240,7 +240,7 @@ Outcome: Sustainable health and energy that supports your training and life goal
   <motion.h2
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 1 }}
+    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     viewport={{ once: false, margin: '-100px' }}
     className="text-4xl md:text-6xl tracking-wider mb-12 text-gray-900"
     style={{ fontFamily: 'Swiss721BT Bold Condensed, sans-serif', fontWeight: 700 }}
