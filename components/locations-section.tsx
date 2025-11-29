@@ -2,7 +2,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { MapPin, Search, Clock, X } from "lucide-react";
+import { MapPin, Search, Clock, X, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
@@ -22,6 +22,12 @@ export default function LocationsSection() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    // Load Mustica Pro font
+    const link = document.createElement('link');
+    link.href = 'https://fonts.cdnfonts.com/css/mustica-pro';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
     let alive = true;
     (async () => {
       try {
@@ -76,9 +82,14 @@ export default function LocationsSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center py-32 bg-white overflow-hidden">
-      {/* Grid Background */}
-      <div className="absolute inset-0 bg-grid-subtle opacity-30 pointer-events-none" />
+    <section className="relative min-h-screen flex items-center py-32 bg-white overflow-hidden" style={{ fontFamily: "'Mustica Pro', 'Helvetica Neue', Arial, sans-serif" }}>
+      {/* Dark Grain Texture */}
+      <div 
+        className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply" 
+        style={{ 
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+        }} 
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
@@ -89,10 +100,10 @@ export default function LocationsSection() {
           viewport={{ once: false, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-wider mb-6 text-gray-900">
-            FIND YOUR <span className="text-gradient-red-cyan">LOCATION</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-wider mb-6 text-black drop-shadow-2xl">
+            FIND YOUR <span className="text-black border-b-4 border-black">LOCATION</span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Join runners worldwide at one of our community meet-ups
           </p>
         </motion.div>
@@ -106,20 +117,20 @@ export default function LocationsSection() {
           className="max-w-2xl mx-auto mb-16"
         >
           <div className="relative group">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-600 transition-colors" />
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 group-focus-within:text-black transition-colors" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by city, place, or description..."
-              className="w-full pl-14 pr-14 py-5 rounded-2xl border-2 border-gray-200 bg-white/50 backdrop-blur-sm focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all text-gray-900 placeholder:text-gray-400 text-lg shadow-sm hover:shadow-md"
+              className="w-full pl-14 pr-14 py-5 rounded-full border-2 border-black bg-white text-black focus:border-black focus:outline-none focus:ring-4 focus:ring-black/10 transition-all placeholder:text-gray-500 text-lg shadow-lg hover:shadow-xl"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-6 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-100 transition-colors"
+                className="absolute right-6 top-1/2 -translate-y-1/2 p-1 hover:bg-black/5 transition-colors"
               >
-                <X className="h-5 w-5 text-gray-400" />
+                <X className="h-5 w-5 text-gray-600" />
               </button>
             )}
           </div>
@@ -140,7 +151,7 @@ export default function LocationsSection() {
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <div
                 key={n}
-                className="h-48 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 animate-pulse"
+                className="h-48 rounded-3xl border-2 border-black/20 bg-gray-50 animate-pulse"
               />
             ))}
           </div>
@@ -148,13 +159,13 @@ export default function LocationsSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-20 bg-gradient-to-br from-gray-50 to-white rounded-3xl border-2 border-dashed border-gray-200"
+            className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-black/30"
           >
-            <MapPin className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-600 font-semibold text-lg mb-2">
+            <MapPin className="h-16 w-16 text-black/30 mx-auto mb-4" />
+            <p className="text-black font-semibold text-lg mb-2">
               {searchQuery ? "No locations found" : "No locations yet"}
             </p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-600">
               {searchQuery
                 ? "Try a different search term"
                 : "Check back soon for upcoming meet-ups"}
@@ -175,43 +186,51 @@ export default function LocationsSection() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div className="h-full rounded-2xl backdrop-blur-xl bg-white/60 border-2 border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 group-hover:border-cyan-300/50 overflow-hidden">
-                  {/* Gradient accent on hover */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-5 bg-gradient-to-br from-blue-600 to-cyan-500 transition-opacity duration-300 pointer-events-none" />
+                <div className="h-full border-2 border-white bg-black shadow-2xl hover:shadow-white/20 transition-all duration-300 group-hover:border-white overflow-hidden">
+                  {/* Grain overlay */}
+                  <div 
+                    className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
+                    style={{ 
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
+                    }} 
+                  />
+
+                  {/* White accent on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300 pointer-events-none" />
 
                   <div className="relative z-10 p-8">
                     {/* Icon and City */}
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 shadow-md">
-                        <MapPin className="h-6 w-6 text-white" />
+                      <div className="p-3 border-2 border-white bg-white shadow-md">
+                        <MapPin className="h-6 w-6 text-black" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                        <h3 className="text-2xl font-bold text-white group-hover:text-gray-300 transition-colors mb-1">
                           {loc.city}
                         </h3>
-                        <p className="text-gray-600 font-medium">{loc.place}</p>
+                        <p className="text-gray-400 font-medium">{loc.place}</p>
                       </div>
                     </div>
 
                     {/* Divider */}
-                    <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-4" />
+                    <div className="w-12 h-1 bg-white mb-4" />
 
                     {/* Time */}
                     <div className="flex items-center gap-2 mb-4">
-                      <Clock className="h-4 w-4 text-blue-600" />
-                      <p className="text-blue-700 font-semibold">{loc.time}</p>
+                      <Clock className="h-4 w-4 text-white" />
+                      <p className="text-white font-semibold">{loc.time}</p>
                     </div>
 
                     {/* Description */}
                     {loc.description && (
-                      <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                      <p className="text-gray-400 text-sm leading-relaxed mb-3">
                         {loc.description}
                       </p>
                     )}
 
                     {/* Timezone */}
                     {loc.tz && (
-                      <p className="text-xs text-gray-400 font-mono mt-4 pt-4 border-t border-gray-100">
+                      <p className="text-xs text-gray-500 font-mono mt-4 pt-4 border-t border-white/20">
                         {loc.tz}
                       </p>
                     )}
