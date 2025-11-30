@@ -1,0 +1,71 @@
+// prisma/schema.prisma
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model Location {
+    id          String   @id @default(cuid())
+    city        String
+    place       String
+    time        String
+    description String?
+    tz          String?
+    order       Int      @default(0)
+    published   Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model Testimonial {
+    id        String   @id @default(cuid())
+    name      String
+    title     String
+    quote     String
+    publicId  String?
+    imageUrl  String?
+    order     Int      @default(0)
+    published Boolean  @default(true)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Coach {
+    id        String   @id @default(cuid())
+    name      String
+    specialty String
+    publicId  String
+    imageUrl  String
+    order     Int      @default(0)
+    published Boolean  @default(true)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model RunCategory {
+    id        String   @id @default(cuid())
+    title     String
+    publicId  String
+    imageUrl  String
+    order     Int      @default(0)
+    published Boolean  @default(true)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model BrandingFeature {
+    id          String   @id @default(cuid())
+    title       String
+    publicId    String
+    imageUrl    String
+    description String?
+    order       Int      @default(0)
+    published   Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}

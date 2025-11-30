@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
     title,
     publicId,
     imageUrl,
+    description,
     order,
     published = true,
   } = await req.json();
@@ -28,11 +29,19 @@ export async function POST(req: NextRequest) {
   const maxOrder = await prisma.brandingFeature.aggregate({
     _max: { order: true },
   });
+
   const nextOrder =
     typeof order === "number" ? order : (maxOrder._max.order ?? -1) + 1;
 
   const item = await prisma.brandingFeature.create({
-    data: { title, publicId, imageUrl, order: nextOrder, published },
+    data: {
+      title,
+      publicId,
+      imageUrl,
+      description: description ?? null,
+      order: nextOrder,
+      published,
+    },
   });
 
   return NextResponse.json({ item });

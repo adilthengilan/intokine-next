@@ -1,3 +1,4 @@
+// app/page.tsx
 "use client";
 
 import HeroSection from "../hero-section";
@@ -21,14 +22,14 @@ export default function Page() {
   const missionStatement =
     "Founded on the belief that true wellness comes from balance — Intokine bridges the worlds of performance training and human development.We blend ancient movement practices with modern training science to build not only stronger bodies but also resilient, adaptable, and self-aware individuals.";
 
- const timelineEntries = [
-  {
-    id: 1,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-    alt: "Zaki – The Intokine Wellness System",
-    title: "ZAKI – The Intokine Wellness System",
-    description: `
+  const timelineEntries = [
+    {
+      id: 1,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+      alt: "Zaki – The Intokine Wellness System",
+      title: "ZAKI – The Intokine Wellness System",
+      description: `
 Zaki is our flagship holistic wellness program — a complete journey of physical, mental, and emotional transformation.
 
 Combining fitness, mindfulness, nutrition, and mindset coaching, Zaki helps you reconnect with your body, reset your habits, and restore balance in your everyday life.
@@ -41,16 +42,16 @@ Includes:
 
 Outcome: A grounded, stronger, and more self-aware version of you — living with clarity and purpose.
     `,
-    layout: "left" as const,
-  },
+      layout: "left" as const,
+    },
 
-  {
-    id: 2,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-    alt: "Calisthenics Training",
-    title: "Calisthenics Training",
-    description: `
+    {
+      id: 2,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+      alt: "Calisthenics Training",
+      title: "Calisthenics Training",
+      description: `
 Master your own bodyweight through strength, control, and creativity.
 
 Our Calisthenics Program builds functional strength, mobility, and coordination — from fundamentals to advanced bodyweight skills.
@@ -62,16 +63,16 @@ Focus Areas:
 
 Outcome: Power, precision, and full control over your body.
     `,
-    layout: "right" as const,
-  },
+      layout: "right" as const,
+    },
 
-  {
-    id: 3,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-    alt: "Martial Arts",
-    title: "Martial Arts",
-    description: `
+    {
+      id: 3,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+      alt: "Martial Arts",
+      title: "Martial Arts",
+      description: `
 Discipline the mind, condition the body, and find your flow through martial practice.
 
 We blend traditional and modern martial arts — including kickboxing, kung fu, and combat movement — to develop both physical resilience and mental sharpness.
@@ -83,16 +84,16 @@ Focus Areas:
 
 Outcome: A warrior mindset built on discipline, focus, and respect.
     `,
-    layout: "left" as const,
-  },
+      layout: "left" as const,
+    },
 
-  {
-    id: 4,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-    alt: "Animal Flow",
-    title: "Animal Flow",
-    description: `
+    {
+      id: 4,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+      alt: "Animal Flow",
+      title: "Animal Flow",
+      description: `
 Animal Flow is a ground-based bodyweight movement system that blends quadrupedal locomotion, mobility drills, positional isometrics, and fluid transitions to build strength, stability, and body control.
 
 It develops full-body coordination and proprioception.
@@ -101,16 +102,16 @@ It develops full-body coordination and proprioception.
 • Improves mobility and joint health in functional ranges.
 • Trains movement efficiency and fluidity rather than isolated muscles.
     `,
-    layout: "right" as const,
-  },
+      layout: "right" as const,
+    },
 
-  {
-    id: 5,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-    alt: "Functional Movement Training",
-    title: "Functional Movement Training",
-    description: `
+    {
+      id: 5,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+      alt: "Functional Movement Training",
+      title: "Functional Movement Training",
+      description: `
 Move better to live better.
 
 This program focuses on improving your everyday movement efficiency, posture, and joint stability — blending training science with human movement principles.
@@ -122,16 +123,16 @@ Focus Areas:
 
 Outcome: Enhanced functionality and freedom of motion in all aspects of life.
     `,
-    layout: "left" as const,
-  },
+      layout: "left" as const,
+    },
 
-  {
-    id: 6,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-    alt: "Strength & Conditioning",
-    title: "Strength & Conditioning",
-    description: `
+    {
+      id: 6,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+      alt: "Strength & Conditioning",
+      title: "Strength & Conditioning",
+      description: `
 Engineered for athletes and everyday performers alike.
 
 Our Strength & Conditioning Program builds endurance, power, and athletic capacity — the foundation of high-level physical performance.
@@ -143,16 +144,16 @@ Focus Areas:
 
 Outcome: Peak strength, improved stamina, and high-performance capability.
     `,
-    layout: "right" as const,
-  },
+      layout: "right" as const,
+    },
 
-  {
-    id: 7,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-    alt: "Mental Health Support",
-    title: "Mental Health Support",
-    description: `
+    {
+      id: 7,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+      alt: "Mental Health Support",
+      title: "Mental Health Support",
+      description: `
 True strength starts within.
 
 Our Mental Health Support program integrates emotional awareness, mindset training, and stress management to help you build resilience, focus, and peace of mind.
@@ -164,16 +165,16 @@ Focus Areas:
 
 Outcome: A calmer, more focused, and mentally balanced you.
     `,
-    layout: "left" as const,
-  },
+      layout: "left" as const,
+    },
 
-  {
-    id: 8,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-    alt: "Ventures Development Training",
-    title: "Ventures Development Training",
-    description: `
+    {
+      id: 8,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+      alt: "Ventures Development Training",
+      title: "Ventures Development Training",
+      description: `
 Train not just for the body — but for life.
 
 This Intokine module develops leadership, creativity, and performance in real-world ventures — ideal for athletes, entrepreneurs, and community leaders.
@@ -185,16 +186,16 @@ Focus Areas:
 
 Outcome: A mindset built for progress — professionally and personally.
     `,
-    layout: "right" as const,
-  },
+      layout: "right" as const,
+    },
 
-  {
-    id: 9,
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-    alt: "Nutrition & Lifestyle Coaching",
-    title: "Nutrition & Lifestyle Coaching",
-    description: `
+    {
+      id: 9,
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+      alt: "Nutrition & Lifestyle Coaching",
+      title: "Nutrition & Lifestyle Coaching",
+      description: `
 Fuel your movement with precision.
 
 Our Nutrition Program teaches you how to eat, recover, and live for long-term vitality — no crash diets, just conscious nourishment.
@@ -206,9 +207,9 @@ Focus Areas:
 
 Outcome: Sustainable health and energy that supports your training and life goals.
     `,
-    layout: "left" as const,
-  },
-];
+      layout: "left" as const,
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -237,26 +238,28 @@ Outcome: Sustainable health and energy that supports your training and life goal
           className="container mx-auto px-6 relative z-10"
         >
           <div className="max-w-4xl mx-auto text-center">
-  <motion.h2
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 1 }}
-    viewport={{ once: false, margin: '-100px' }}
-    className="text-4xl md:text-6xl tracking-wider mb-12 text-gray-900"
-    style={{ fontFamily: 'Swiss721BT Bold Condensed, sans-serif', fontWeight: 700 }}
-  >
-    About Intokine
-  </motion.h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              viewport={{ once: false, margin: "-100px" }}
+              className="text-4xl md:text-6xl tracking-wider mb-12 text-gray-900"
+              style={{
+                fontFamily: "Swiss721BT Bold Condensed, sans-serif",
+                fontWeight: 700,
+              }}
+            >
+              About Intokine
+            </motion.h2>
 
-  <TextGradientScroll
-    text={missionStatement}
-    className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-gray-800"
-    // style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 600 }}
-    type="word"
-    textOpacity="soft"
-  />
-</div>
-
+            <TextGradientScroll
+              text={missionStatement}
+              className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-gray-800"
+              // style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 600 }}
+              type="word"
+              textOpacity="soft"
+            />
+          </div>
         </motion.div>
       </section>
 
@@ -281,8 +284,8 @@ Outcome: Sustainable health and energy that supports your training and life goal
                 Experiences
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                At Intokine, we don’t just train.
-We redefine how you move, think, and live.
+                At Intokine, we don’t just train. We redefine how you move,
+                think, and live.
               </p>
             </motion.div>
           </div>

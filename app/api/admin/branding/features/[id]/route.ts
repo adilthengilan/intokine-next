@@ -9,7 +9,7 @@ export async function PUT(
   const id = params.id;
   const body = await req.json();
 
-  const { title, publicId, imageUrl, order, published } = body;
+  const { title, publicId, imageUrl, order, published, description } = body;
 
   const item = await prisma.brandingFeature.update({
     where: { id },
@@ -19,6 +19,7 @@ export async function PUT(
       ...(imageUrl !== undefined ? { imageUrl } : {}),
       ...(order !== undefined ? { order } : {}),
       ...(published !== undefined ? { published } : {}),
+      ...(description !== undefined ? { description } : {}),
     },
   });
 

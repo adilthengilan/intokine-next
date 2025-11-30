@@ -18,6 +18,7 @@ type Item = {
   title: string;
   publicId: string;
   imageUrl: string;
+  description: string | null;
   order: number;
   published: boolean;
   createdAt: string;
@@ -62,14 +63,17 @@ function ItemCard({
     title: item.title,
     order: item.order,
     published: item.published,
+    description: item.description ?? "",
   });
+
   const [saving, setSaving] = useState(false);
 
   const dirty = useMemo(() => {
     return (
       form.title !== item.title ||
       form.order !== item.order ||
-      form.published !== item.published
+      form.published !== item.published ||
+      (form.description ?? "") !== (item.description ?? "")
     );
   }, [form, item]);
 
@@ -95,6 +99,7 @@ function ItemCard({
       title: item.title,
       order: item.order,
       published: item.published,
+      description: item.description ?? "",
     });
   };
 
@@ -199,6 +204,24 @@ function ItemCard({
                 />
               </div>
             </div>
+
+            <div className="md:col-span-2">
+              <label className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+                Description
+              </label>
+              <textarea
+                value={form.description}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, description: e.target.value }))
+                }
+                className="w-full min-h-[80px] border border-gray-300 rounded-lg px-3 py-2 text-sm resize-vertical focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="Short description shown in the app branding carousel"
+              />
+              <p className="mt-1 text-xs text-gray-400">
+                Keep it crisp (1–3 lines). This will show on the card for this
+                feature.
+              </p>
+            </div>
           </div>
 
           <div>
@@ -262,6 +285,7 @@ export default function AdminBrandingPage() {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [description, setDescription] = useState("");
 
   const fileRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
@@ -321,12 +345,14 @@ export default function AdminBrandingPage() {
           publicId: upJson.public_id,
           imageUrl: upJson.secure_url,
           published: true,
+          description: description || null,
         }),
       });
 
       setTitle("");
       setFile(null);
       setPreview(null);
+      setDescription("");
       if (fileRef.current) fileRef.current.value = "";
       titleRef.current?.focus();
 
@@ -446,7 +472,8 @@ export default function AdminBrandingPage() {
       <div>
         <h2 className="text-2xl font-bold text-gray-900">Branding Features</h2>
         <p className="mt-1 text-sm text-gray-600">
-          Manage carousel images and titles for your app branding section
+          Manage carousel images, titles and descriptions for your app branding
+          section
         </p>
       </div>
 
@@ -480,6 +507,18 @@ export default function AdminBrandingPage() {
                 onChange={(e) => setFile(e.target.files?.[0] ?? null)}
               />
             </div>
+          </div>
+
+          <div className="space-y-2 md:col-span-2 lg:col-span-3">
+            <label className="text-sm font-medium text-gray-700">
+              Description (optional)
+            </label>
+            <textarea
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm resize-vertical focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Short description that explains what this screen or feature is about"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
 
           <div className="space-y-2 flex items-end">
