@@ -36,26 +36,28 @@ model Testimonial {
 }
 
 model Coach {
-    id        String   @id @default(cuid())
-    name      String
-    specialty String
-    publicId  String
-    imageUrl  String
-    order     Int      @default(0)
-    published Boolean  @default(true)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id          String   @id @default(cuid())
+    name        String
+    specialty   String
+    publicId    String
+    imageUrl    String
+    description String?
+    order       Int      @default(0)
+    published   Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
 
 model RunCategory {
-    id        String   @id @default(cuid())
-    title     String
-    publicId  String
-    imageUrl  String
-    order     Int      @default(0)
-    published Boolean  @default(true)
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id          String   @id @default(cuid())
+    title       String
+    publicId    String
+    imageUrl    String
+    description String?
+    order       Int      @default(0)
+    published   Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
 
 model BrandingFeature {

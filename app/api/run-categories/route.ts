@@ -6,7 +6,13 @@ export async function GET() {
   const items = await prisma.runCategory.findMany({
     where: { published: true },
     orderBy: { order: "asc" },
-    select: { id: true, title: true, imageUrl: true, order: true },
+    select: {
+      id: true,
+      title: true,
+      imageUrl: true,
+      order: true,
+      description: true,
+    },
   });
   return NextResponse.json({ items });
 }

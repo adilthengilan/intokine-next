@@ -10,9 +10,11 @@ export async function GET() {
       id: true,
       name: true,
       specialty: true,
+      description: true,
       imageUrl: true,
       order: true,
     },
   });
+
   return NextResponse.json({ items });
 }

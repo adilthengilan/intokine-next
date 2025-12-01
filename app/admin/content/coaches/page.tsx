@@ -17,6 +17,7 @@ type Item = {
   id: string;
   name: string;
   specialty: string;
+  description: string | null;
   publicId: string;
   imageUrl: string;
   order: number;
@@ -24,9 +25,6 @@ type Item = {
   createdAt: string;
   updatedAt: string;
 };
-
-const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!;
-const PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!;
 
 function diffPatch<T extends Record<string, any>>(orig: T, curr: Partial<T>) {
   const patch: Partial<T> = {};
@@ -59,6 +57,7 @@ function ItemCard({
   const [form, setForm] = useState({
     name: item.name,
     specialty: item.specialty,
+    description: item.description ?? "",
     order: item.order,
     published: item.published,
   });
@@ -68,6 +67,7 @@ function ItemCard({
     () =>
       form.name !== item.name ||
       form.specialty !== item.specialty ||
+      (form.description ?? "") !== (item.description ?? "") ||
       form.order !== item.order ||
       form.published !== item.published,
     [form, item]
@@ -77,8 +77,12 @@ function ItemCard({
     if (!form.name.trim()) return toast.error("Name is required");
     if (!form.specialty.trim()) return toast.error("Specialty is required");
 
-    const patch = diffPatch(item, form);
+    const patch = diffPatch(item, {
+      ...form,
+      description: form.description || null,
+    });
     if (!Object.keys(patch).length) return;
+
     setSaving(true);
     try {
       await onUpdate(item.id, patch);
@@ -92,6 +96,7 @@ function ItemCard({
     setForm({
       name: item.name,
       specialty: item.specialty,
+      description: item.description ?? "",
       order: item.order,
       published: item.published,
     });
@@ -148,6 +153,25 @@ function ItemCard({
                 placeholder="e.g. Trail Running"
               />
             </div>
+          </div>
+
+          {/* Description */}
+          <div>
+            <label className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+              Description
+            </label>
+            <textarea
+              value={form.description}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, description: e.target.value }))
+              }
+              className="w-full min-h-[80px] border border-gray-300 rounded-lg px-3 py-2 text-sm resize-vertical focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Short bio or what this coach focuses on in training"
+            />
+            <p className="mt-1 text-xs text-gray-400">
+              Keep it crisp (1–3 lines). This can show on the public coaches
+              section.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -212,6 +236,7 @@ function ItemCard({
             </div>
           </div>
 
+          {/* Image replace */}
           <div>
             <label className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
               Replace Image
@@ -246,6 +271,7 @@ function ItemCard({
           </div>
         </div>
 
+        {/* Danger zone */}
         <div className="flex lg:flex-col gap-2">
           <button
             onClick={() => onDelete(item.id)}
@@ -267,6 +293,7 @@ export default function AdminCoachesPage() {
 
   const [name, setName] = useState("");
   const [specialty, setSpecialty] = useState("");
+  const [description, setDescription] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
@@ -323,6 +350,7 @@ export default function AdminCoachesPage() {
         body: JSON.stringify({
           name,
           specialty,
+          description: description || null,
           publicId: upJson.public_id,
           imageUrl: upJson.secure_url,
           published: true,
@@ -331,9 +359,10 @@ export default function AdminCoachesPage() {
 
       setName("");
       setSpecialty("");
+      setDescription("");
       setFile(null);
       setPreview(null);
-      fileRef.current && (fileRef.current.value = "");
+      if (fileRef.current) fileRef.current.value = "";
       nameRef.current?.focus();
 
       toast.success("Coach added");
@@ -447,6 +476,18 @@ export default function AdminCoachesPage() {
               placeholder="e.g. Speed & Sprint"
               value={specialty}
               onChange={(e) => setSpecialty(e.target.value)}
+            />
+          </div>
+
+          <div className="space-y-2 md:col-span-2">
+            <label className="text-sm font-medium text-gray-700">
+              Description (optional)
+            </label>
+            <textarea
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm resize-vertical focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              placeholder="Short bio or what this coach helps you achieve"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 

@@ -9,13 +9,15 @@ export async function PUT(
   const id = params.id;
   const body = await req.json();
 
-  const { name, specialty, publicId, imageUrl, order, published } = body;
+  const { name, specialty, description, publicId, imageUrl, order, published } =
+    body;
 
   const item = await prisma.coach.update({
     where: { id },
     data: {
       ...(name !== undefined ? { name } : {}),
       ...(specialty !== undefined ? { specialty } : {}),
+      ...(description !== undefined ? { description } : {}),
       ...(publicId !== undefined ? { publicId } : {}),
       ...(imageUrl !== undefined ? { imageUrl } : {}),
       ...(order !== undefined ? { order } : {}),

@@ -9,6 +9,7 @@ type Coach = {
   id: string;
   name: string;
   specialty: string;
+  description?: string | null;
   imageUrl: string;
   order: number;
 };
@@ -76,7 +77,12 @@ export function CoachesSection() {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: "spring", stiffness: 80, damping: 15, duration: 0.8 } as any,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        duration: 0.8,
+      } as any,
     },
   };
 
@@ -146,7 +152,8 @@ export function CoachesSection() {
                 <div
                   className="relative rounded-[10px] overflow-hidden h-72 cursor-pointer bg-black shadow-lg hover:shadow-2xl transition-shadow duration-500"
                   style={{
-                    boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.08)",
+                    boxShadow:
+                      "0 10px 30px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.08)",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.boxShadow =
@@ -161,21 +168,25 @@ export function CoachesSection() {
                     src={cldFill(coach.imageUrl, 600, 800)}
                     alt={coach.name}
                     className="w-full h-full object-cover filter grayscale"
-                    style={{ transition: "all 0.7s cubic-bezier(0.4, 0, 0.2, 1)" }}
+                    style={{
+                      transition: "all 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
                     animate={{
                       scale: hoveredIndex === index ? 1.1 : 1,
-                      filter: hoveredIndex === index ? "grayscale(0%)" : "grayscale(100%)",
+                      filter:
+                        hoveredIndex === index
+                          ? "grayscale(0%)"
+                          : "grayscale(100%)",
                     }}
                     loading="lazy"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-500" />
 
-                  <motion.div
-                    className="absolute inset-0 rounded-[10px] border-2 border-white/0 group-hover:border-white/30 transition-all duration-500"
-                  />
+                  <motion.div className="absolute inset-0 rounded-[10px] border-2 border-white/0 group-hover:border-white/30 transition-all duration-500" />
 
                   <div className="absolute inset-0 flex flex-col justify-between p-6">
+                    {/* Specialty pill */}
                     <motion.div
                       className="self-start bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full"
                       initial={{ opacity: 0, y: -15 }}
@@ -211,17 +222,34 @@ export function CoachesSection() {
                           {coach.name}
                         </motion.h3>
 
-                        <motion.p
-                          className="text-xs text-white/70 tracking-widest uppercase"
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{
-                            opacity: hoveredIndex === index ? 1 : 0,
-                            y: hoveredIndex === index ? 0 : 8,
-                          }}
-                          transition={{ duration: 0.3, delay: 0.2 }}
-                        >
-                          Available for Consultation
-                        </motion.p>
+                        {/* Description appears on hover if present */}
+                        {coach.description && (
+                          <motion.p
+                            className="text-xs sm:text-sm text-white/80 leading-relaxed"
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{
+                              opacity: hoveredIndex === index ? 1 : 0,
+                              y: hoveredIndex === index ? 0 : 8,
+                            }}
+                            transition={{ duration: 0.3, delay: 0.2 }}
+                          >
+                            {coach.description}
+                          </motion.p>
+                        )}
+
+                        {!coach.description && (
+                          <motion.p
+                            className="text-xs text-white/70 tracking-widest uppercase"
+                            initial={{ opacity: 0, y: 8 }}
+                            animate={{
+                              opacity: hoveredIndex === index ? 1 : 0,
+                              y: hoveredIndex === index ? 0 : 8,
+                            }}
+                            transition={{ duration: 0.3, delay: 0.2 }}
+                          >
+                            Available for Consultation
+                          </motion.p>
+                        )}
                       </div>
 
                       <motion.div
@@ -242,12 +270,15 @@ export function CoachesSection() {
                     className="absolute bottom-4 left-4 w-10 h-10 rounded-full border-2 border-white/30 flex items-center justify-center"
                     animate={{
                       scale: hoveredIndex === index ? 1.05 : 1,
-                      borderColor: hoveredIndex === index ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.3)",
+                      borderColor:
+                        hoveredIndex === index
+                          ? "rgba(255,255,255,0.6)"
+                          : "rgba(255,255,255,0.3)",
                     }}
                     transition={{ duration: 0.3 }}
                   >
                     <span className="text-white font-bold text-base">
-                      {String(index + 1).padStart(2, '0')}
+                      {String(index + 1).padStart(2, "0")}
                     </span>
                   </motion.div>
                 </div>

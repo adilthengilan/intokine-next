@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
-  const items = await prisma.coach.findMany({ orderBy: { order: "asc" } });
+  const items = await prisma.coach.findMany({
+    orderBy: { order: "asc" },
+  });
   return NextResponse.json({ items });
 }
 
@@ -11,6 +13,7 @@ export async function POST(req: NextRequest) {
   const {
     name,
     specialty,
+    description,
     publicId,
     imageUrl,
     order,
@@ -29,7 +32,15 @@ export async function POST(req: NextRequest) {
     typeof order === "number" ? order : (maxOrder._max.order ?? -1) + 1;
 
   const item = await prisma.coach.create({
-    data: { name, specialty, publicId, imageUrl, order: nextOrder, published },
+    data: {
+      name,
+      specialty,
+      description: description ?? null,
+      publicId,
+      imageUrl,
+      order: nextOrder,
+      published,
+    },
   });
 
   return NextResponse.json({ item });

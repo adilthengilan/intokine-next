@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
     imageUrl,
     order,
     published = true,
+    description,
   } = await req.json();
 
   if (!title || !publicId || !imageUrl) {
@@ -28,11 +29,19 @@ export async function POST(req: NextRequest) {
   const maxOrder = await prisma.runCategory.aggregate({
     _max: { order: true },
   });
+
   const nextOrder =
     typeof order === "number" ? order : (maxOrder._max.order ?? -1) + 1;
 
   const item = await prisma.runCategory.create({
-    data: { title, publicId, imageUrl, order: nextOrder, published },
+    data: {
+      title,
+      publicId,
+      imageUrl,
+      description: description ?? null,
+      order: nextOrder,
+      published,
+    },
   });
 
   return NextResponse.json({ item });

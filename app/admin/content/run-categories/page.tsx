@@ -18,6 +18,7 @@ type Item = {
   title: string;
   publicId: string;
   imageUrl: string;
+  description: string | null;
   order: number;
   published: boolean;
   createdAt: string;
@@ -59,6 +60,7 @@ function ItemCard({
     title: item.title,
     order: item.order,
     published: item.published,
+    description: item.description ?? "",
   });
   const [saving, setSaving] = useState(false);
 
@@ -66,7 +68,8 @@ function ItemCard({
     () =>
       form.title !== item.title ||
       form.order !== item.order ||
-      form.published !== item.published,
+      form.published !== item.published ||
+      (form.description ?? "") !== (item.description ?? ""),
     [form, item]
   );
 
@@ -88,11 +91,13 @@ function ItemCard({
       title: item.title,
       order: item.order,
       published: item.published,
+      description: item.description ?? "",
     });
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
       <div className="flex flex-col lg:flex-row gap-4">
+        {/* Image */}
         <div className="relative w-full lg:w-64 h-48 flex-shrink-0">
           <img
             src={item.imageUrl}
@@ -112,6 +117,7 @@ function ItemCard({
           </div>
         </div>
 
+        {/* Fields */}
         <div className="flex-1 space-y-4">
           <div>
             <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -122,7 +128,7 @@ function ItemCard({
               onChange={(e) =>
                 setForm((f) => ({ ...f, title: e.target.value }))
               }
-              className="w-full mt-1 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full mt-1 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
               placeholder="e.g. Tempo Runs"
             />
           </div>
@@ -147,7 +153,7 @@ function ItemCard({
                       toast.error("Failed to update visibility");
                     }
                   }}
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="w-5 h-5 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 <span className="text-sm text-gray-700">Published</span>
               </label>
@@ -187,6 +193,25 @@ function ItemCard({
                 />
               </div>
             </div>
+
+            {/* Description */}
+            <div className="md:col-span-2">
+              <label className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2 block">
+                Description
+              </label>
+              <textarea
+                value={form.description}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, description: e.target.value }))
+                }
+                className="w-full min-h-[80px] border border-gray-300 rounded-lg px-3 py-2 text-sm resize-vertical focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                placeholder="Short description about this run category (1–3 lines)."
+              />
+              <p className="mt-1 text-xs text-gray-400">
+                This description will show in the category details area on the
+                website.
+              </p>
+            </div>
           </div>
 
           <div>
@@ -201,7 +226,7 @@ function ItemCard({
                 if (f) await onReplaceImage(item.id, f);
                 e.currentTarget.value = "";
               }}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
             />
           </div>
 
@@ -223,6 +248,7 @@ function ItemCard({
           </div>
         </div>
 
+        {/* Delete */}
         <div className="flex lg:flex-col gap-2">
           <button
             onClick={() => onDelete(item.id)}
@@ -245,6 +271,7 @@ export default function AdminRunCategoriesPage() {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [description, setDescription] = useState("");
 
   const fileRef = useRef<HTMLInputElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
@@ -260,6 +287,7 @@ export default function AdminRunCategoriesPage() {
   useEffect(() => {
     load();
   }, []);
+
   useEffect(() => {
     if (!file) return setPreview(null);
     const url = URL.createObjectURL(file);
@@ -274,7 +302,7 @@ export default function AdminRunCategoriesPage() {
       const fd = new FormData();
       fd.append("file", file);
       fd.append("upload_preset", PRESET);
-      fd.append("folder", "wadada/branding"); // same folder as branding
+      fd.append("folder", "wadada/branding");
 
       const upRes = await fetch(
         `https://api.cloudinary.com/v1_1/${CLOUD}/auto/upload`,
@@ -295,12 +323,14 @@ export default function AdminRunCategoriesPage() {
           publicId: upJson.public_id,
           imageUrl: upJson.secure_url,
           published: true,
+          description: description || null,
         }),
       });
 
       setTitle("");
       setFile(null);
       setPreview(null);
+      setDescription("");
       if (fileRef.current) fileRef.current.value = "";
       titleRef.current?.focus();
 
@@ -384,7 +414,7 @@ export default function AdminRunCategoriesPage() {
       const fd = new FormData();
       fd.append("file", f);
       fd.append("upload_preset", PRESET);
-      fd.append("folder", "wadada/branding"); // same folder
+      fd.append("folder", "wadada/branding");
 
       const upRes = await fetch(
         `https://api.cloudinary.com/v1_1/${CLOUD}/auto/upload`,
@@ -408,6 +438,7 @@ export default function AdminRunCategoriesPage() {
 
   return (
     <div className="space-y-6">
+      {/* Header */}
       <div>
         <h2 className="text-2xl font-bold text-gray-900">Run Categories</h2>
         <p className="mt-1 text-sm text-gray-600">
@@ -415,6 +446,7 @@ export default function AdminRunCategoriesPage() {
         </p>
       </div>
 
+      {/* Create Form */}
       <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
         <div className="flex items-center gap-2 mb-4">
           <Upload className="h-5 w-5 text-emerald-600" />
@@ -441,6 +473,18 @@ export default function AdminRunCategoriesPage() {
               accept="image/*"
               className="w-full border border-gray-300 rounded-lg px-4 py-2.5 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
               onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            />
+          </div>
+
+          <div className="space-y-2 md:col-span-2 lg:col-span-3">
+            <label className="text-sm font-medium text-gray-700">
+              Description (optional)
+            </label>
+            <textarea
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm resize-vertical focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+              placeholder="Short description about what this run category focuses on."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 
@@ -478,6 +522,7 @@ export default function AdminRunCategoriesPage() {
         </p>
       </div>
 
+      {/* Items list */}
       <div>
         <h3 className="font-semibold text-gray-900 mb-4">
           Existing Categories ({loading ? "..." : sorted.length})

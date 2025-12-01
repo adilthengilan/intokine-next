@@ -17,7 +17,7 @@ const SECTIONS = [
   { href: "/admin/content/branding", label: "Services", icon: ImageIcon },
   {
     href: "/admin/content/run-categories",
-    label: "Service Categories",
+    label: "Run Categories",
     icon: ListChecks,
   },
   { href: "/admin/content/coaches", label: "Coaches", icon: Users },
