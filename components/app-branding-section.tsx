@@ -1,5 +1,6 @@
 // components/app-branding-section.tsx
 "use client";
+import { useRouter } from "next/navigation";
 
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
@@ -24,6 +25,7 @@ function cldFill(url: string, w: number, h: number) {
 }
 
 export default function AppBrandingSection() {
+  const router = useRouter();
   const [features, setFeatures] = useState<Feature[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -224,7 +226,9 @@ export default function AppBrandingSection() {
                       viewport={{ once: true }}
                       whileHover={{ y: -15, scale: 1.02 }}
                       className="flex-shrink-0 w-full md:w-96 snap-center cursor-pointer"
-                      onClick={() => setSelectedId(feature.id)}
+                      onClick={() => { setSelectedId(feature.id)
+    router.push(`pages/app`)}
+                      }
                     >
                       <div
                         className={`group h-80 rounded-[10px] overflow-hidden relative bg-black ${
@@ -264,7 +268,7 @@ export default function AppBrandingSection() {
                         <motion.div className="absolute inset-0 rounded-[10px] border-2 border-white/0 group-hover:border-white/30 transition-all duration-500" />
 
                         {/* Glass card for content */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <div className="absolute bottom-0 left-0 right-0 p-6" >
                           <motion.div
                             className="backdrop-blur-xl bg-white/20 border border-white/40 rounded-[10px] p-5 shadow-2xl"
                             initial={{ y: 20, opacity: 0 }}
