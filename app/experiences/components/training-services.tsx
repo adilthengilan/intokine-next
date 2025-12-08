@@ -1,7 +1,12 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+import { motion, type Variants } from "framer-motion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export default function TrainingServices() {
   const services = [
@@ -47,16 +52,19 @@ export default function TrainingServices() {
             "Negril: Seven Mile Beach (Saturdays, 7 AM)",
             "Montego Bay: Hip Strip (Wednesdays, 5:30 PM)",
           ],
-          details: "Mixed ability groups, experienced coaches, and post-run community gathering.",
+          details:
+            "Mixed ability groups, experienced coaches, and post-run community gathering.",
         },
         {
           name: "Offline Indoor Batch Training",
-          description: "Group training sessions in our facility with structured workouts for all levels.",
+          description:
+            "Group training sessions in our facility with structured workouts for all levels.",
           locations: [
             "Kingston Indoor Studio: Speed & strength focused (Mon/Wed/Fri, 6 AM & 5 PM)",
             "Miami Indoor Studio: Interval & endurance work (Tues/Thurs, 6 AM & 4 PM)",
           ],
-          details: "Climate-controlled, state-of-the-art equipment, certified coaches, and supportive community.",
+          details:
+            "Climate-controlled, state-of-the-art equipment, certified coaches, and supportive community.",
         },
         {
           name: "Online Batch Training",
@@ -88,12 +96,14 @@ export default function TrainingServices() {
         },
         {
           name: "Ladies Indoor Batch Training",
-          description: "Group training exclusively for women in a supportive, empowering environment.",
+          description:
+            "Group training exclusively for women in a supportive, empowering environment.",
           locations: [
             "Kingston: Monday & Wednesday, 5:30 PM - Strength & power focus",
             "Miami: Tuesday & Thursday, 6:30 AM - Mixed distances",
           ],
-          details: "Female-only sessions, experienced women coaches, mentorship opportunities, and strong community.",
+          details:
+            "Female-only sessions, experienced women coaches, mentorship opportunities, and strong community.",
         },
       ],
     },
@@ -113,12 +123,15 @@ export default function TrainingServices() {
           name: "Offline Indoor Partner Training",
           description:
             "Train side-by-side with a partner in our facility. Competition-inspired workouts with personalized coaching.",
-          details: "Partner-specific warmups and cool-downs, competitive intervals, and performance comparisons.",
+          details:
+            "Partner-specific warmups and cool-downs, competitive intervals, and performance comparisons.",
         },
         {
           name: "Offline Outdoor Partner Training",
-          description: "Run together on the roads and trails with coaching for both runners.",
-          details: "Synchronized pacing, relay-style workouts, hill repeats together, and adventure running.",
+          description:
+            "Run together on the roads and trails with coaching for both runners.",
+          details:
+            "Synchronized pacing, relay-style workouts, hill repeats together, and adventure running.",
         },
       ],
     },
@@ -129,15 +142,15 @@ export default function TrainingServices() {
       items: [
         {
           name: "Coming Soon",
-          description: "We're developing comprehensive training programs for young runners aged 8-18.",
+          description:
+            "We're developing comprehensive training programs for young runners aged 8-18.",
           details:
             "Programs will include fun, age-appropriate workouts, injury prevention, and confidence building. Sign up to our newsletter for updates.",
         },
       ],
     },
-  ]
-
-  const containerVariants = {
+  ];
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -146,16 +159,19 @@ export default function TrainingServices() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
     },
-  }
+  };
 
   return (
     <section id="services" className="relative py-20 bg-white">
@@ -170,7 +186,9 @@ export default function TrainingServices() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">TRAINING PROGRAMS</h2>
+          <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">
+            TRAINING PROGRAMS
+          </h2>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Find the perfect training approach for your lifestyle and goals
           </p>
@@ -184,13 +202,25 @@ export default function TrainingServices() {
           className="space-y-12"
         >
           {services.map((service) => (
-            <motion.div key={service.id} variants={itemVariants} className="space-y-6">
+            <motion.div
+              key={service.id}
+              variants={itemVariants}
+              className="space-y-6"
+            >
               <div className="border-l-4 border-gray-900 pl-6">
-                <h3 className="text-3xl md:text-4xl font-black tracking-wider text-gray-900 mb-2">{service.title}</h3>
-                <p className="text-lg md:text-xl text-gray-600">{service.subtitle}</p>
+                <h3 className="text-3xl md:text-4xl font-black tracking-wider text-gray-900 mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-lg md:text-xl text-gray-600">
+                  {service.subtitle}
+                </p>
               </div>
 
-              <Accordion type="single" collapsible className="bg-gray-50 rounded-lg border border-gray-200 px-6">
+              <Accordion
+                type="single"
+                collapsible
+                className="bg-gray-50 rounded-lg border border-gray-200 px-6"
+              >
                 {service.items.map((item, index) => (
                   <AccordionItem
                     key={index}
@@ -202,18 +232,24 @@ export default function TrainingServices() {
                         <h4 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-gray-600 transition-colors">
                           {item.name}
                         </h4>
-                        <p className="text-gray-600 text-sm md:text-base mt-1">{item.description}</p>
+                        <p className="text-gray-600 text-sm md:text-base mt-1">
+                          {item.description}
+                        </p>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pb-6 text-gray-700">
                       <div className="space-y-4 mt-4 bg-white rounded p-4">
                         {item.locations && (
                           <div>
-                            <h5 className="font-bold text-gray-900 mb-3">Locations & Schedule:</h5>
+                            <h5 className="font-bold text-gray-900 mb-3">
+                              Locations & Schedule:
+                            </h5>
                             <ul className="space-y-2">
                               {item.locations.map((location, i) => (
                                 <li key={i} className="flex items-start">
-                                  <span className="text-gray-900 font-bold mr-3">•</span>
+                                  <span className="text-gray-900 font-bold mr-3">
+                                    •
+                                  </span>
                                   <span>{location}</span>
                                 </li>
                               ))}
@@ -221,8 +257,12 @@ export default function TrainingServices() {
                           </div>
                         )}
                         <div>
-                          <h5 className="font-bold text-gray-900 mb-2">What's Included:</h5>
-                          <p className="text-gray-700 leading-relaxed">{item.details}</p>
+                          <h5 className="font-bold text-gray-900 mb-2">
+                            What's Included:
+                          </h5>
+                          <p className="text-gray-700 leading-relaxed">
+                            {item.details}
+                          </p>
                         </div>
                       </div>
                     </AccordionContent>
@@ -241,7 +281,9 @@ export default function TrainingServices() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <p className="text-lg md:text-xl text-gray-600 mb-8">Ready to start your journey with Wadada Run Club?</p>
+          <p className="text-lg md:text-xl text-gray-600 mb-8">
+            Ready to start your journey with Wadada Run Club?
+          </p>
           <a
             href="#join"
             className="inline-block bg-gray-900 text-white px-8 py-4 rounded-lg font-bold tracking-wider hover:bg-gray-800 transition-colors duration-300"
@@ -251,5 +293,5 @@ export default function TrainingServices() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
