@@ -4,6 +4,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 type Category = {
   id: string;
@@ -26,6 +27,8 @@ function cldFill(url: string, w: number, h: number) {
 }
 
 export default function RunCategoriesSection() {
+    const router = useRouter();
+  
   const [items, setItems] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -155,7 +158,10 @@ export default function RunCategoriesSection() {
                     variants={itemVariants}
                     whileHover={{ y: -16 }}
                     className="flex flex-col group relative"
-                    onClick={() => setSelectedId(category.id)}
+                    onClick={() =>{
+                      setSelectedId(category.id)
+                      router.push('services/app')
+                    }}
                   >
                     <div
                       className={`relative h-80 cursor-pointer overflow-hidden bg-black rounded-[10px] ${

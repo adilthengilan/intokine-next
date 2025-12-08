@@ -227,7 +227,7 @@ export default function AppBrandingSection() {
                       whileHover={{ y: -15, scale: 1.02 }}
                       className="flex-shrink-0 w-full md:w-96 snap-center cursor-pointer"
                       onClick={() => { setSelectedId(feature.id)
-    router.push(`pages/app`)}
+    router.push(`trainings/app`)}
                       }
                     >
                       <div
