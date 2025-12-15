@@ -9,7 +9,7 @@ import "./globals.css";
 const swiss = localFont({
   src: [
     {
-      path: "../public/fonts/Swiss 721 BT.ttf",
+      path: "../public/fonts/Swiss-721-BT.ttf",
       weight: "400",
       style: "normal",
     },
@@ -31,17 +31,17 @@ const swiss = localFont({
 const raleway = localFont({
   src: [
     {
-      path: "../public/fonts/Raleway Light.ttf",
+      path: "../public/fonts/Raleway-Light.ttf",
       weight: "300",
       style: "normal",
     },
     {
-      path: "../public/fonts/Raleway Regular.ttf",
+      path: "../public/fonts/Raleway-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/Raleway SemiBold.ttf",
+      path: "../public/fonts/Raleway-SemiBold.ttf",
       weight: "600",
       style: "normal",
     },
