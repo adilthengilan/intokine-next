@@ -102,7 +102,7 @@ export default function Page() {
         <Timeline entries={timelineEntries} />
       </section>
 
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       <CTASection />
 
