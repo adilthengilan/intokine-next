@@ -109,7 +109,7 @@ export default function Page() {
       {/* Smooth Scroll CTA */}
       <section id="join" className="relative grain-overlay">
         <SmoothScrollHero
-          scrollHeight={2500}
+          scrollHeight={1500}
           desktopImage="/images/runners-motion-blur.png"
           mobileImage="/images/runners-motion-blur.png"
           initialClipPercentage={30}
