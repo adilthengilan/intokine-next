@@ -14,6 +14,8 @@ type LocationItem = {
   description?: string | null;
   tz?: string | null;
   order: number;
+  image?: string | null;
+  mapLink?: string | null;
 };
 
 export default function LocationsSection() {
@@ -186,7 +188,24 @@ export default function LocationsSection() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div className="h-full border-2 border-white bg-black shadow-2xl hover:shadow-white/20 transition-all duration-300 group-hover:border-white overflow-hidden">
+                <div 
+                  onClick={() => loc.mapLink && window.open(loc.mapLink, '_blank')}
+                  className={`h-full border-2 border-white bg-black shadow-2xl hover:shadow-white/20 transition-all duration-300 group-hover:border-white overflow-hidden ${loc.mapLink ? 'cursor-pointer' : ''}`}
+                >
+                  {/* Image with gradient overlay */}
+                  {loc.image && (
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={loc.image}
+                        alt={loc.city}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      
+                      {/* Black gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                    </div>
+                  )}
+
                   {/* Grain overlay */}
                   <div 
                     className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
@@ -233,6 +252,14 @@ export default function LocationsSection() {
                       <p className="text-xs text-gray-500 font-mono mt-4 pt-4 border-t border-white/20">
                         {loc.tz}
                       </p>
+                    )}
+
+                    {/* View on Map CTA */}
+                    {loc.mapLink && (
+                      <div className="flex items-center gap-2 mt-6 text-white group-hover:text-gray-300 transition-colors">
+                        <span className="text-sm font-bold">VIEW ON MAP</span>
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </div>
                     )}
                   </div>
                 </div>

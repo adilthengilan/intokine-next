@@ -1,28 +1,54 @@
 import type { Metadata } from "next";
-import { Raleway, Inter } from "next/font/google"; // You can replace Inter with any Google font
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 /* ----------------------------
-   FONT CONFIGURATION
+   CUSTOM SWISS 721 FONT
 -----------------------------*/
-
-// Google Font: Raleway (Light + SemiBold)
-const raleway = Raleway({
-  subsets: ["latin"],
-  weight: ["300", "600"],
-  variable: "--font-raleway",
-  display: "swap",
-});
-
-// Google Font: Swiss (use closest available Google font if Swiss721 not on Google)
-const swiss = Inter({ // you can replace 'Inter' with a closer font like 'Roboto' or 'IBM Plex Sans'
-  subsets: ["latin"],
-  weight: ["700"], // bold
+const swiss = localFont({
+  src: [
+    {
+      path: "../public/fonts/Swiss 721 BT.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Swiss-721-bt-bold-condensed.ttf",
+      weight: "700",
+      style: "bold",
+    },
+    // {
+    //   path: "../public/fonts/Swiss-721BT-BoldCondensedItalic.ttf",
+    //   weight: "700",
+    //   style: "italic",
+    // },
+  ],
   variable: "--font-swiss",
   display: "swap",
 });
 
+const raleway = localFont({
+  src: [
+    {
+      path: "../public/fonts/Raleway Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Raleway Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Raleway SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+  ],
+  variable: "--font-raleway",
+  display: "swap",
+});
 /* ----------------------------
    SITE METADATA
 -----------------------------*/
@@ -37,8 +63,8 @@ export const metadata: Metadata = {
 -----------------------------*/
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${raleway.variable} ${swiss.variable}`}>
-      <body className="font-[var(--font-raleway)] bg-background text-foreground antialiased">
+    <html lang="en" className={swiss.variable}>
+      <body className="font-[var(--font-swiss)] bg-background text-foreground antialiased">
         {children}
         <Analytics />
       </body>

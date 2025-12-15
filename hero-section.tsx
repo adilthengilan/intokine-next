@@ -62,16 +62,16 @@ export default function HeroSection() {
         {/* Logo/Brand */}
 <div className="flex items-center gap-2">
   <Image
-    src="./publics/images/intokine_logo.png"
+    src="./images/intokine_logo.png"
     alt="Intokine Logo"
-    width={600}       // fallback width
-    height={300}      // fallback height
+    width={100}       // fallback width
+    height={50}      // fallback height
     className="
       object-contain
       w-28 h-10       /* mobile size */
       sm:w-36 sm:h-12 /* small screens */
       md:w-48 md:h-16 /* tablets */
-      lg:w-64 lg:h-20 /* desktop */
+      lg:w-54 lg:h-20 /* desktop */
       xl:w-72 xl:h-24 /* large desktop */
     "
     priority
@@ -129,10 +129,10 @@ export default function HeroSection() {
             RUN CLUB
           </h1> */}
            <Image
-    src="./images/intokine_full_name_logo.png"        // 👈 put your logo file inside the /public folder (e.g., public/logo.png)
+    src="./images/logo-04.png"        // 👈 put your logo file inside the /public folder (e.g., public/logo.png)
     alt="Intokine Logo"
-    width={280}             // adjust size as needed
-    height={10}
+    width={380}             // adjust size as needed
+    height={80}
     className="object-contain"
     priority
   />

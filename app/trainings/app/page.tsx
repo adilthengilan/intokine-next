@@ -95,7 +95,7 @@ export default function Page() {
             <h2 className="text-4xl md:text-6xl font-black tracking-wider text-black mb-6 text-balance">OUR JOURNEY</h2>
             <div className="w-20 h-1 bg-black mx-auto mb-6" />
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              From passion to excellence – explore the milestones that make Wadada Run Club special
+              From passion to excellence – explore the milestones that make Intokine Club special
             </p>
           </motion.div>
         </div>
