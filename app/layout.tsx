@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/next";
-import "./globals.css";
+import type { Metadata } from "next"
+import localFont from "next/font/local"
+import { Analytics } from "@vercel/analytics/next"
+import "./globals.css"
 
-/* ----------------------------
-   CUSTOM SWISS 721 FONT
------------------------------*/
+/* =========================================================
+   LOCAL FONTS (LINUX / NETLIFY SAFE)
+   Files must EXIST exactly with same casing
+   Location: /public/fonts/
+========================================================= */
+
 const swiss = localFont({
   src: [
     {
@@ -14,19 +17,14 @@ const swiss = localFont({
       style: "normal",
     },
     {
-      path: "../public/fonts/Swiss-721-bt-bold-condensed.ttf",
+      path: "../public/fonts/Swiss-721-BT-Bold-Condensed.ttf",
       weight: "700",
-      style: "bold",
+      style: "normal",
     },
-    // {
-    //   path: "../public/fonts/Swiss-721BT-BoldCondensedItalic.ttf",
-    //   weight: "700",
-    //   style: "italic",
-    // },
   ],
   variable: "--font-swiss",
   display: "swap",
-});
+})
 
 const raleway = localFont({
   src: [
@@ -48,26 +46,38 @@ const raleway = localFont({
   ],
   variable: "--font-raleway",
   display: "swap",
-});
-/* ----------------------------
-   SITE METADATA
------------------------------*/
+})
+
+/* =========================================================
+   METADATA
+========================================================= */
+
 export const metadata: Metadata = {
   title: "Intokine",
   description: "For your body, mind, and lifestyle",
-  icons: { icon: "/images/favIcon.png" },
-};
+  icons: {
+    icon: "/images/favIcon.png",
+  },
+}
 
-/* ----------------------------
+/* =========================================================
    ROOT LAYOUT
------------------------------*/
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+========================================================= */
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={swiss.variable}>
-      <body className="font-[var(--font-swiss)] bg-background text-foreground antialiased">
+    <html
+      lang="en"
+      className={`${swiss.variable} ${raleway.variable}`}
+    >
+      <body className="antialiased bg-background text-foreground font-sans">
         {children}
         <Analytics />
       </body>
     </html>
-  );
+  )
 }
