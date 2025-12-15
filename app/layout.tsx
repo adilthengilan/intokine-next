@@ -17,7 +17,7 @@ const swiss = localFont({
       style: "normal",
     },
     {
-      path: "../public/fonts/Swiss-721-BT-Bold-Condensed.ttf",
+      path: "../public/fonts/swiss-721-bt-bold-condensed.ttf",
       weight: "700",
       style: "normal",
     },
