@@ -1,93 +1,98 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect, type FormEvent } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { MessageSquare, Send, X, Bot, User } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { cn } from "@/lib/utils"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import { useState, useRef, useEffect, type FormEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageSquare, Send, X, Bot, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Message {
-  role: "user" | "bot"
-  content: string
+  role: "user" | "bot";
+  content: string;
 }
 
-// Function to generate a simple unique ID
-const generateSessionId = () => `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+const generateSessionId = () =>
+  `session_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 
 export default function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
-      content: "Hi! I'm the Wadada Run Club assistant. How can I help you today?",
+      content:
+        "Hi! I'm the Wadada Run Club assistant. How can I help you today?",
     },
-  ])
-  const [input, setInput] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  // State to hold the session ID for the current chat
-  const [sessionId, setSessionId] = useState<string | null>(null)
-  const scrollAreaRef = useRef<HTMLDivElement>(null)
+  ]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Generate a session ID when the component mounts or when the chat is opened
     if (isOpen && !sessionId) {
-      setSessionId(generateSessionId())
+      setSessionId(generateSessionId());
     }
-  }, [isOpen, sessionId])
+  }, [isOpen, sessionId]);
 
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTo({
         top: scrollAreaRef.current.scrollHeight,
         behavior: "smooth",
-      })
+      });
     }
-  }, [messages])
+  }, [messages]);
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    if (!input.trim() || isLoading) return
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { role: "user", content: input }
-    setMessages((prev) => [...prev, userMessage])
-    setInput("")
-    setIsLoading(true)
+    const userMessage: Message = { role: "user", content: input };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
 
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input, sessionId: sessionId }),
-      })
+        body: JSON.stringify({ message: input, sessionId }),
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to get response from server.")
+        throw new Error(data.error || "Failed to get response from server.");
       }
 
-      const botMessage: Message = { role: "bot", content: data.reply }
-      setMessages((prev) => [...prev, botMessage])
+      const botMessage: Message = { role: "bot", content: data.reply };
+      setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
-      console.error(error)
-      let message = "Sorry, something went wrong. Please try again later."
+      console.error(error);
+      let message = "Sorry, something went wrong. Please try again later.";
       if (error instanceof Error) {
-        message = error.message
+        message = error.message;
       }
       const errorMessage: Message = {
         role: "bot",
         content: message,
-      }
-      setMessages((prev) => [...prev, errorMessage])
+      };
+      setMessages((prev) => [...prev, errorMessage]);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <>
@@ -107,10 +112,15 @@ export default function Chatbot() {
                     <Bot className="text-primary" />
                     Wadada Assistant
                   </CardTitle>
-                  <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsOpen(false)}
+                  >
                     <X className="h-4 w-4" />
                   </Button>
                 </CardHeader>
+
                 <CardContent className="flex-grow overflow-hidden">
                   <ScrollArea className="h-full" ref={scrollAreaRef}>
                     <div className="space-y-4 pr-4">
@@ -119,7 +129,9 @@ export default function Chatbot() {
                           key={index}
                           className={cn(
                             "flex items-start gap-3",
-                            message.role === "user" ? "justify-end" : "justify-start",
+                            message.role === "user"
+                              ? "justify-end"
+                              : "justify-start"
                           )}
                         >
                           {message.role === "bot" && (
@@ -127,31 +139,39 @@ export default function Chatbot() {
                               <Bot size={16} />
                             </div>
                           )}
+
                           <div
                             className={cn(
                               "p-3 rounded-lg max-w-[80%]",
-                              message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted",
+                              message.role === "user"
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-muted"
                             )}
                           >
-                           {/* import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm"; */}
-
-<ReactMarkdown
-  remarkPlugins={[remarkGfm]}
-  components={{
-    p: ({ node, ...props }) => (
-      <p className="text-sm leading-relaxed mb-2 last:mb-0" {...props} />
-    ),
-    ol: ({ node, ...props }) => (
-      <ol className="list-decimal pl-5 mb-2" {...props} />
-    ),
-    li: ({ node, ...props }) => <li className="mb-1" {...props} />,
-  }}
->
-  {/* {markdownText} Your markdown string */}
-</ReactMarkdown>
-
+                            <ReactMarkdown
+                              remarkPlugins={[remarkGfm]}
+                              components={{
+                                p: ({ node, ...props }) => (
+                                  <p
+                                    className="text-sm leading-relaxed mb-2 last:mb-0"
+                                    {...props}
+                                  />
+                                ),
+                                ol: ({ node, ...props }) => (
+                                  <ol
+                                    className="text-sm leading-relaxed list-decimal pl-5 mb-2"
+                                    {...props}
+                                  />
+                                ),
+                                li: ({ node, ...props }) => (
+                                  <li className="mb-1" {...props} />
+                                ),
+                              }}
+                            >
+                              {message.content}
+                            </ReactMarkdown>
                           </div>
+
                           {message.role === "user" && (
                             <div className="p-2 bg-muted rounded-full">
                               <User size={16} />
@@ -159,6 +179,7 @@ import remarkGfm from "remark-gfm"; */}
                           )}
                         </div>
                       ))}
+
                       {isLoading && (
                         <div className="flex items-start gap-3 justify-start">
                           <div className="p-2 bg-primary text-primary-foreground rounded-full">
@@ -176,8 +197,12 @@ import remarkGfm from "remark-gfm"; */}
                     </div>
                   </ScrollArea>
                 </CardContent>
+
                 <CardFooter>
-                  <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
+                  <form
+                    onSubmit={handleSubmit}
+                    className="flex w-full items-center space-x-2"
+                  >
                     <Input
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
@@ -194,6 +219,7 @@ import remarkGfm from "remark-gfm"; */}
             </motion.div>
           )}
         </AnimatePresence>
+
         <motion.div layout>
           <Button
             onClick={() => setIsOpen(!isOpen)}
@@ -205,5 +231,5 @@ import remarkGfm from "remark-gfm"; */}
         </motion.div>
       </div>
     </>
-  )
+  );
 }
