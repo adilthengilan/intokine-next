@@ -243,18 +243,18 @@ Outcome: Sustainable health and energy that supports your training and life goal
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: false, margin: "-100px" }}
-              className="text-4xl md:text-6xl tracking-wider mb-12 text-gray-900"
-              style={{
-                fontFamily: "Swiss721BT Bold Condensed, sans-serif",
-                fontWeight: 700,
-              }}
+              className="text-4xl md:text-6xl font-header tracking-wider mb-12 text-gray-900"
+              // style={{
+              //   fontFamily: "Swiss721BT Bold Condensed, sans-serif",
+              //   fontWeight: 700,
+              // }}
             >
-              About Intokine
+              ABOUT INTOKINE
             </motion.h2>
 
             <TextGradientScroll
               text={missionStatement}
-              className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-gray-800"
+              className="text-2xl md:text-3xl font-subheader lg:text-4xl leading-relaxed text-gray-800"
               // style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 600 }}
               type="word"
               textOpacity="soft"

@@ -102,11 +102,11 @@ export default function LocationsSection() {
           viewport={{ once: false, margin: "-100px" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-wider mb-6 text-black drop-shadow-2xl">
+          <h2 className="text-4xl md:text-6xl font-header tracking-wider mb-6 text-black drop-shadow-2xl">
             FIND YOUR <span className="text-black border-b-4 border-black">LOCATION</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Join runners worldwide at one of our community meet-ups
+            Find your next training location
           </p>
         </motion.div>
 

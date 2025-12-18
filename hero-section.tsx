@@ -84,7 +84,7 @@ export default function HeroSection() {
             <button
               key={item.name}
               onClick={() => scrollToSection(item.href)}
-              className="relative text-white hover:text-gray-300 transition-colors duration-300 font-medium tracking-wide pb-1 group"
+              className="relative text-white hover:text-gray-300 font-header transition-colors duration-300 font-medium tracking-wide pb-1 group"
             >
               {item.name}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full"></span>
@@ -138,7 +138,7 @@ export default function HeroSection() {
   />
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl font-light tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</p>
+          <p className="text-xl md:text-2xl font-subheader tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</p>
 
           {/* CTA Button - Now using LiquidButton */}
           <LiquidButton
