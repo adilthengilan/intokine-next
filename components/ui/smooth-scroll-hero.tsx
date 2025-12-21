@@ -91,7 +91,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
             <div className="text-center text-white max-w-4xl mx-auto px-6">
 
               {/* Main Heading */}
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-wider mb-6 leading-none">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-header tracking-wider mb-6 leading-none">
                 WHERE MOVEMENT
                 <br />
                 <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
@@ -100,7 +100,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
               </h2>
 
               {/* Subheading */}
-              <p className="text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed font-medium">
+              <p className="text-lg md:text-xl lg:text-2xl font-header text-gray-200 mb-8 leading-relaxed font-medium">
                 Intokine blends sports, martial arts, fitness, nutrition, psychology,
                 <br className="hidden md:block" />
                 and lifestyle design to help you reconnect with your highest potential.
@@ -179,15 +179,15 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
                   Ready to Transform Your Life?
                 </h2>
                 <p className="text-lg md:text-xl text-gray-300 font-medium">
-                  Join our community and start your fitness journey today
+                  Join intokine and start your fitness journey today
                 </p>
               </div>
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-bold text-lg whitespace-nowrap overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50">
+              {/* <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full font-bold text-lg whitespace-nowrap overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50">
                 <span className="relative z-10 flex items-center gap-2">
                   Get Started Free
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -200,7 +200,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
                 {/* <h3 className="text-2xl md:text-3xl font-black mb-2 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   IntoKine
                 </h3> */}
-                <img src="./public/images/intokine_full_name_logo.png" style={{ width: '200px' , height: 'auto'}}></img>
+                <img src="./images/intokine_full_name_logo.png" style={{ width: '200px' , height: 'auto'}}></img>
                 <p className="text-sm text-gray-400 font-medium">
                   Healthy Fitness Team
                 </p>
