@@ -241,7 +241,7 @@ Outcome: Sustainable health and energy that supports your training and life goal
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
               viewport={{ once: false, margin: "-100px" }}
               className="text-4xl md:text-6xl font-header tracking-wider mb-12 text-gray-900"
               // style={{
@@ -254,7 +254,7 @@ Outcome: Sustainable health and energy that supports your training and life goal
 
             <TextGradientScroll
               text={missionStatement}
-              className="text-2xl md:text-3xl font-subheader lg:text-4xl leading-relaxed text-gray-800"
+              className="text-2xl md:text-3xl font-header lg:text-4xl leading-relaxed text-gray-800"
               // style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 600 }}
               type="word"
               textOpacity="soft"
