@@ -4,54 +4,54 @@
 
 @font-face {
   font-family: 'swiss-721-bt';
-  src: url('/fonts/Swiss721BT.ttf') format('truetype');
+  src: url('../public/fonts/Swiss721BT-BoldCondensed.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'swiss-721-bt';
-  src: url('/fonts/Swiss721Black.ttf') format('truetype');
+  font-family: 'swiss-721-bt-italic';
+  src: url('../public/fonts/Swiss721BT-BoldCondensedItalic.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'swiss-721-bt';
   src: url('/fonts/Swiss721Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
-}
+} */
 
 /* Bold Condensed as separate family */
-@font-face {
+/* @font-face {
   font-family: 'swiss-721-bt-bold-condensed';
   src: url('/fonts/swiss-721-bt-bold-condensed.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
-}
+} */
 
 /* =========================
    RALEWAY
 ========================= */
 
 @font-face {
-  font-family: 'Raleway';
-  src: url('/fonts/Raleway-Light.ttf') format('truetype');
+  font-family: 'Raleway-semibold';
+  src: url('../public/fonts/Raleway-SemiBold.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Raleway';
-  src: url('/fonts/Raleway-Regular.ttf') format('truetype');
+  font-family: 'Raleway-light';
+  src: url('../public/fonts/Raleway-Light.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Raleway';
   src: url('/fonts/Raleway-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
-}
+} */

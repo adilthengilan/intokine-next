@@ -78,12 +78,11 @@ export function PremiumTestimonials() {
           viewport={{ once: false, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-black tracking-wider text-gray-900 mb-6">
-            What Our Runners Say
+          <h2 className="text-4xl md:text-6xl font-header tracking-wider text-gray-900 mb-6">
+            Our Clients Experiences
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Real stories from real runners who found their stride with Wadada
-            Run Club.
+            Real stories from who found their stride with INTOKINE.
           </p>
         </motion.div>
 

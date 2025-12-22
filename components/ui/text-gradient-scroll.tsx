@@ -64,11 +64,8 @@ function useGradientScroll() {
     <TextGradientScrollContext.Provider value={{ textOpacity, type }}>
       <p
         ref={ref}
-        className={cn("relative flex m-0 flex-wrap", className)}
-        style={{
-          fontFamily: "Raleway, sans-serif", // Raleway font
-          fontWeight: 600,                   // SemiBold
-        }}
+        className={cn("relative font-body flex m-0 flex-wrap", className)}
+     
       >
         {words.map((word, i) => {
           const start = i / words.length;

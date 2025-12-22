@@ -172,23 +172,12 @@ export default function AppBrandingSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header with glass effect */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-block mb-6 px-8 py-3 rounded-full backdrop-blur-xl bg-white/60 border border-gray-300/60 shadow-lg"
-          >
+        <div className="text-center mb-20">
+          <div className="inline-block mb-6 px-8 py-3 rounded-full backdrop-blur-xl bg-white/60 border border-gray-300/60 shadow-lg">
             <span className="text-sm font-semibold tracking-widest text-gray-800">
               EXPERIENCE THE APP
             </span>
-          </motion.div>
+          </div>
 
           <h2 className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-gray-900">
             Intokine
@@ -196,7 +185,7 @@ export default function AppBrandingSection() {
           <p className="text-xl text-gray-700 max-w-2xl mx-auto font-light">
             Your Complete Fitness & Wellness Companion
           </p>
-        </motion.div>
+        </div>
 
         {features.length === 0 ? (
           <p className="text-center text-gray-500">No branding items yet.</p>
@@ -215,15 +204,11 @@ export default function AppBrandingSection() {
                   WebkitOverflowScrolling: "touch",
                 }}
               >
-                {features.map((feature, index) => {
+                {features.map((feature) => {
                   const isSelected = feature.id === selectedId;
                   return (
                     <motion.div
                       key={feature.id}
-                      initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
                       whileHover={{ y: -15, scale: 1.02 }}
                       className="flex-shrink-0 w-full md:w-96 snap-center cursor-pointer"
                       onClick={() => { setSelectedId(feature.id)
@@ -269,12 +254,7 @@ export default function AppBrandingSection() {
 
                         {/* Glass card for content */}
                         <div className="absolute bottom-0 left-0 right-0 p-6" >
-                          <motion.div
-                            className="backdrop-blur-xl bg-white/20 border border-white/40 rounded-[10px] p-5 shadow-2xl"
-                            initial={{ y: 20, opacity: 0 }}
-                            whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                          >
+                          <div className="backdrop-blur-xl bg-white/20 border border-white/40 rounded-[10px] p-5 shadow-2xl">
                             {/* Decorative white line */}
                             <div className="w-16 h-1 bg-white rounded-full mb-4 opacity-0 group-hover:opacity-100 transform origin-left scale-x-0 group-hover:scale-x-100 transition-all duration-500" />
 
@@ -324,7 +304,7 @@ export default function AppBrandingSection() {
                                 />
                               </motion.svg>
                             </motion.div>
-                          </motion.div>
+                          </div>
                         </div>
 
                         {/* Sparkle effect on corners */}

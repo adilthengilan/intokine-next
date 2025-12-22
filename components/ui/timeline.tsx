@@ -105,10 +105,10 @@ function TimelineItem({ entry, index, scrollProgress }: TimelineItemProps) {
                 viewport={{ once: true }}
                 className="space-y-6"
               >
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-wide text-gray-900">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-header tracking-wide text-gray-900">
                   {entry.title}
                 </h3>
-                <p className="text-lg md:text-xl leading-relaxed text-gray-700 max-w-lg">{entry.description}</p>
+                <p className="text-lg md:text-xl font-body leading-relaxed text-gray-700 max-w-lg">{entry.description}</p>
               </motion.div>
             </div>
           </div>

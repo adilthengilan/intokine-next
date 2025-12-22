@@ -112,7 +112,7 @@ export default function RunCategoriesSection() {
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-gray-900">
             CATEGORIES
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg font-body text-gray-600 max-w-2xl mx-auto">
             Reconnect with your body, mind, and lifestyle — blending fitness,
             nutrition, martial arts, and mindful practices.
           </p>

@@ -12,14 +12,14 @@ import "./globals.css"
 const swiss = localFont({
   src: [
     {
-      path: "../public/fonts/Swiss-721-BT.ttf",
-      weight: "400",
+      path: "../public/fonts/Swiss721BT-BoldCondensed.otf",
+      weight: "700",
       style: "normal",
     },
     {
-      path: "../public/fonts/swiss-721-bt-bold-condensed.ttf",
+      path: "../public/fonts/Swiss721BT-BoldCondensedItalic.otf",
       weight: "700",
-      style: "normal",
+      style: "italic",
     },
   ],
   variable: "--font-swiss",
@@ -33,14 +33,14 @@ const raleway = localFont({
       weight: "300",
       style: "normal",
     },
-    {
-      path: "../public/fonts/Raleway-Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
+    // {
+    //   path: "../public/fonts/Raleway-Regular.ttf",
+    //   weight: "400",
+    //   style: "normal",
+    // },
     {
       path: "../public/fonts/Raleway-SemiBold.ttf",
-      weight: "600",
+      weight: "500",
       style: "normal",
     },
   ],

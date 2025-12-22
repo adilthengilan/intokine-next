@@ -87,7 +87,7 @@ export default function HeroSection() {
               className="relative text-white hover:text-gray-300 font-header transition-colors duration-300 font-medium tracking-wide pb-1 group"
             >
               {item.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full"></span>
+              <h1 className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full"></h1>
             </button>
           ))}
         </div>
@@ -138,7 +138,7 @@ export default function HeroSection() {
   />
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl font-subheader tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</p>
+          <h4 className="text-xl md:text-2xl font-header tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</h4>
 
           {/* CTA Button - Now using LiquidButton */}
           <LiquidButton

@@ -254,7 +254,7 @@ Outcome: Sustainable health and energy that supports your training and life goal
 
             <TextGradientScroll
               text={missionStatement}
-              className="text-2xl md:text-3xl font-header lg:text-4xl leading-relaxed text-gray-800"
+              className="text-2xl md:text-3xl font-body lg:text-4xl leading-relaxed text-gray-800"
               // style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 600 }}
               type="word"
               textOpacity="soft"
@@ -280,10 +280,10 @@ Outcome: Sustainable health and energy that supports your training and life goal
               viewport={{ once: false, margin: "-100px" }}
               className="text-center"
             >
-              <h2 className="text-4xl md:text-6xl font-black tracking-wider mb-6 text-gray-900">
+              <h2 className="text-4xl md:text-6xl font-header tracking-wider mb-6 text-gray-900">
                 Experiences
               </h2>
-              <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl font-body text-gray-600 max-w-3xl mx-auto">
                 At Intokine, we don’t just train. We redefine how you move,
                 think, and live.
               </p>
