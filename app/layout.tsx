@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
+import { Raleway } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
@@ -26,27 +27,12 @@ const swiss = localFont({
   display: "swap",
 })
 
-const raleway = localFont({
-  src: [
-    {
-      path: "../public/fonts/Raleway-Light.ttf",
-      weight: "300",
-      style: "normal",
-    },
-    // {
-    //   path: "../public/fonts/Raleway-Regular.ttf",
-    //   weight: "400",
-    //   style: "normal",
-    // },
-    {
-      path: "../public/fonts/Raleway-SemiBold.ttf",
-      weight: "500",
-      style: "normal",
-    },
-  ],
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["300", "600"],
   variable: "--font-raleway",
   display: "swap",
-})
+});
 
 /* =========================================================
    METADATA

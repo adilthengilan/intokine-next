@@ -138,7 +138,7 @@ export default function HeroSection() {
   />
 
           {/* Subtitle */}
-          <h4 className="text-xl md:text-2xl font-header tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</h4>
+          <p className="text-xl md:text-2xl font-body tracking-wide mb-8 text-gray-200">For your body, mind, and lifestyle</p>
 
           {/* CTA Button - Now using LiquidButton */}
           <LiquidButton

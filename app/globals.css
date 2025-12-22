@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap'); */
 
 @layer base {
   :root {
@@ -40,11 +40,11 @@
     --sidebar-ring: 239 84% 55%;
     --font-header: 'swiss-721-bt-bold-condensed', sans-serif;
     --font-subheader: 'Raleway', sans-serif;
-    --font-body: 'Railway', sans-serif;
+    --font-body: var(--font-raleway);
     --font-serif: Georgia, serif;
     --font-mono: Fira Code, monospace;
     --radius: 0.675rem;
-    --shadow-2xs: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.08);
+    --shadow-2xs: 4.5px 4.5px 0px 0px hsla(240, 12%, 10%, 0.08);
     --shadow-xs: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.12);
     --shadow-sm: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 1px 2px -1px hsl(239 84% 55% / 0.12);
     --shadow: 4.5px 4.5px 0px 0px hsl(239 84% 55% / 0.16), 4.5px 1px 2px -1px hsl(239 84% 55% / 0.12);
@@ -90,8 +90,8 @@
     --sidebar-border: 0 0% 20.7843%;
     --sidebar-ring: 239 84% 55%;
     --font-header: 'Swiss721BT-BlackCondensed', sans-serif;
-    --font-subheader: 'Railway', sans-serif;
-    --font-sans: 'Railway', sans-serif;
+    --font-subheader: 'Raleway', sans-serif;
+    --font-body: 'Raleway', sans-serif;
     --font-serif: Georgia, serif;
     --font-mono: Fira Code, monospace;
     --radius: 0.675rem;
@@ -138,7 +138,7 @@ h4, h5, h6 {
 }
 
 /* Paragraph styles */
-p {
+p,span,li {
   font-family: var(--font-body);
   font-weight: 300; /* Light */
 }
