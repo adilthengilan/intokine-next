@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
-import { Zap, Target, Activity, TrendingUp, Heart, Timer } from "lucide-react"
+import { Zap, Target, Activity, TrendingUp, Dumbbell, Timer, Flame, Trophy } from "lucide-react"
 
 export function SportsTrackingSection() {
   const containerVariants = {
@@ -34,21 +34,21 @@ export function SportsTrackingSection() {
     },
   }
 
-  // Updated feature cards for Intokine
+  // Updated feature cards for Fitness App
   const featureCards = [
-    { icon: Activity, text: "Skill Development", description: "Learn and enhance new skills interactively" },
-    { icon: Zap, text: "Smart Course Insights", description: "Track your progress and achievements in real-time" },
-    { icon: Target, text: "Personalized Learning", description: "Courses and guidance tailored to your goals" },
+    { icon: Activity, text: "Real-Time Tracking", description: "Monitor heart rate, calories, and performance metrics live during workouts" },
+    { icon: Zap, text: "Smart Analytics", description: "Get AI-powered insights on your fitness progress and performance" },
+    { icon: Target, text: "Goal Setting", description: "Set personalized fitness goals and track your achievements" },
   ]
 
-  // Updated metric cards for Intokine
+  // Updated metric cards for Fitness App
   const metricCards = [
     {
-      title: "Courses",
+      title: "Today's Workout",
       stats: [
-        { label: "Completed", value: "12", icon: TrendingUp as any },
-        { label: "Ongoing", value: "3", icon: Target as any },
-        { label: "Upcoming", value: "2", icon: Timer as any },
+        { label: "Exercises", value: "8", icon: Dumbbell as any },
+        { label: "Sets", value: "24", icon: Activity as any },
+        { label: "Duration", value: "45m", icon: Timer as any },
       ],
       position: "top-4 left-4",
       delay: 0.2,
@@ -60,26 +60,26 @@ export function SportsTrackingSection() {
       icon: undefined,
     },
     {
-      title: "Learning Hours",
-      value: "42",
-      unit: "hrs",
+      title: "Calories Burned",
+      value: "847",
+      unit: "kcal",
       subtitle: "This Week",
       position: "top-4 right-4",
       delay: 0.4,
-      gradient: "from-pink-500/10 to-red-500/10",
-      border: "border-pink-500/30",
-      icon: Heart as any,
+      gradient: "from-orange-500/10 to-red-500/10",
+      border: "border-orange-500/30",
+      icon: Flame as any,
       stats: undefined,
     },
     {
-      title: "Skill Progress",
+      title: "Strength Progress",
       stats: [
-        { label: "Python", value: "80%" },
-        { label: "Design", value: "65%" },
+        { label: "Bench Press", value: "185 lbs" },
+        { label: "Squat", value: "225 lbs" },
       ],
       position: "bottom-4 left-4",
       delay: 0.6,
-      gradient: "from-cyan-500/10 to-blue-500/10",
+      gradient: "from-blue-500/10 to-cyan-500/10",
       border: "border-cyan-500/30",
       value: undefined,
       unit: undefined,
@@ -87,21 +87,39 @@ export function SportsTrackingSection() {
       icon: undefined,
     },
     {
-      title: "Certifications",
-      value: "5",
-      unit: "",
-      subtitle: "Earned",
+      title: "Weekly Streak",
+      value: "12",
+      unit: "days",
+      subtitle: "Keep it up!",
       position: "bottom-4 right-4",
       delay: 0.8,
       gradient: "from-green-500/10 to-emerald-500/10",
       border: "border-green-500/30",
+      icon: Trophy as any,
       stats: undefined,
-      icon: undefined,
     },
   ]
 
   return (
     <section className="relative py-24 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
+      {/* Grain texture overlay - Primary layer */}
+      <div 
+        className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none z-10"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.5' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundSize: '200px 200px',
+        }}
+      />
+
+      {/* Secondary grain layer */}
+      <div 
+        className="absolute inset-0 opacity-[0.1] mix-blend-soft-light pointer-events-none z-10"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='turbulence' baseFrequency='3.5' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)'/%3E%3C/svg%3E")`,
+          backgroundSize: '250px 250px',
+        }}
+      />
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -132,7 +150,7 @@ export function SportsTrackingSection() {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -147,18 +165,24 @@ export function SportsTrackingSection() {
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="inline-block px-6 py-2 bg-black text-white text-xs tracking-widest rounded-full font-semibold"
+              className="relative inline-block px-6 py-2 bg-black text-white text-xs tracking-widest rounded-full font-semibold overflow-hidden"
             >
-              SMART TRACKING
+              {/* Grain on badge */}
+              <div 
+                className="absolute inset-0 opacity-20 mix-blend-overlay"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                }}
+              />
+              <span className="relative z-10">FITNESS REVOLUTION</span>
             </motion.div>
 
             <div className="space-y-6">
               <motion.h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-                THE FUTURE OF SPORTS TRACKING TODAY
+                TRANSFORM YOUR FITNESS JOURNEY
               </motion.h2>
               <motion.p className="text-xl text-gray-600 leading-relaxed font-light">
-                Intokine helps you learn smarter, track your course progress, and achieve your skill goals efficiently with
-                interactive dashboards and real-time insights.
+                Track every rep, monitor your progress, and achieve peak performance with our intelligent fitness companion. Your personal trainer, reimagined.
               </motion.p>
             </div>
 
@@ -167,9 +191,16 @@ export function SportsTrackingSection() {
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
                 whileTap={{ scale: 0.98 }}
-                className="px-10 py-4 bg-gradient-to-r from-gray-900 to-black text-white rounded-[10px] font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="relative px-10 py-4 bg-gradient-to-r from-gray-900 to-black text-white rounded-[10px] font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
               >
-                Get Started Now
+                {/* Grain on button */}
+                <div 
+                  className="absolute inset-0 opacity-15 mix-blend-overlay"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                  }}
+                />
+                <span className="relative z-10">Start Training Now</span>
               </motion.button>
             </motion.div>
 
@@ -184,17 +215,30 @@ export function SportsTrackingSection() {
                     whileHover={{ 
                       x: 8,
                     }}
-                    className="flex items-center gap-5 p-5 rounded-[10px] bg-white/80 backdrop-blur-sm border border-gray-200/60 cursor-pointer shadow-md hover:shadow-lg transition-all duration-300"
+                    className="relative flex items-center gap-5 p-5 rounded-[10px] bg-white/80 backdrop-blur-sm border border-gray-200/60 cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-[10px] bg-gradient-to-br from-red-500 to-cyan-500 flex items-center justify-center shadow-lg">
-                      <Icon className="w-6 h-6 text-white" />
+                    {/* Grain on feature cards */}
+                    <div 
+                      className="absolute inset-0 opacity-10 mix-blend-overlay"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                      }}
+                    />
+                    <div className="relative flex-shrink-0 w-12 h-12 rounded-[10px] bg-gradient-to-br from-red-500 to-cyan-500 flex items-center justify-center shadow-lg overflow-hidden">
+                      <div 
+                        className="absolute inset-0 opacity-20 mix-blend-overlay"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+                        }}
+                      />
+                      <Icon className="relative z-10 w-6 h-6 text-white" />
                     </div>
-                    <div className="flex-1">
+                    <div className="relative flex-1">
                       <p className="font-bold text-gray-900 text-base">{card.text}</p>
                       <p className="text-sm text-gray-600 mt-0.5">{card.description}</p>
                     </div>
                     <svg
-                      className="w-5 h-5 text-gray-400 transition-transform group-hover:translate-x-1"
+                      className="relative w-5 h-5 text-gray-400 transition-transform group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -224,10 +268,25 @@ export function SportsTrackingSection() {
               }}
             >
               <img
-                src="/intokine-learning-dashboard.jpg"
-                alt="Intokine app dashboard for tracking skill development"
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=1000&fit=crop"
+                alt="Athlete training with fitness tracking app"
                 className="w-full h-full object-cover filter brightness-95"
               />
+              
+              {/* Grain texture on image */}
+              <div 
+                className="absolute inset-0 opacity-25 mix-blend-overlay"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.5' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n1)'/%3E%3C/svg%3E")`,
+                }}
+              />
+              <div 
+                className="absolute inset-0 opacity-15 mix-blend-soft-light"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='turbulence' baseFrequency='3.8' numOctaves='6' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E")`,
+                }}
+              />
+              
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               
@@ -248,16 +307,36 @@ export function SportsTrackingSection() {
                   scale: 1.05,
                 }}
                 viewport={{ once: false, margin: "-100px" }}
-                className={`absolute ${card.position} w-52 p-5 rounded-[10px] bg-white/95 backdrop-blur-xl border ${card.border} cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300`}
+                className={`absolute ${card.position} w-52 p-5 rounded-[10px] bg-white/95 backdrop-blur-xl border ${card.border} cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden`}
               >
+                {/* Grain texture on cards */}
+                <div 
+                  className="absolute inset-0 opacity-15 mix-blend-overlay"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.2' numOctaves='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n3)'/%3E%3C/svg%3E")`,
+                  }}
+                />
+                <div 
+                  className="absolute inset-0 opacity-10 mix-blend-soft-light"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n4'%3E%3CfeTurbulence type='turbulence' baseFrequency='3.5' numOctaves='6' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n4)'/%3E%3C/svg%3E")`,
+                  }}
+                />
+                
                 {/* Header with icon */}
-                <div className="flex items-center justify-between mb-3">
+                <div className="relative flex items-center justify-between mb-3">
                   <p className="text-xs font-bold text-gray-900 uppercase tracking-wider">{card.title}</p>
                   {card.icon && (() => {
                     const CardIcon = card.icon;
                     return (
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${card.gradient} flex items-center justify-center`}>
-                        <CardIcon className="w-4 h-4 text-gray-700" />
+                      <div className={`relative w-8 h-8 rounded-lg bg-gradient-to-br ${card.gradient} flex items-center justify-center overflow-hidden`}>
+                        <div 
+                          className="absolute inset-0 opacity-20 mix-blend-overlay"
+                          style={{
+                            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n5'%3E%3CfeTurbulence baseFrequency='5' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n5)'/%3E%3C/svg%3E")`,
+                          }}
+                        />
+                        <CardIcon className="relative z-10 w-4 h-4 text-gray-700" />
                       </div>
                     );
                   })()}
@@ -265,7 +344,7 @@ export function SportsTrackingSection() {
 
                 {/* Large value display */}
                 {card.value && (
-                  <div className="mb-2">
+                  <div className="relative mb-2">
                     <div className="flex items-baseline gap-1">
                       <span className="text-3xl font-bold text-gray-900">{card.value}</span>
                       <span className="text-sm text-gray-500 font-medium">{card.unit}</span>
@@ -278,7 +357,7 @@ export function SportsTrackingSection() {
 
                 {/* Stats list */}
                 {card.stats && (
-                  <div className="space-y-2.5">
+                  <div className="relative space-y-2.5">
                     {card.stats.map((stat: any, i: number) => {
                       const StatIcon = stat.icon;
                       return (

@@ -175,7 +175,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
           <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 mb-16">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="text-center lg:text-left">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-header mb-4 bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
                   Ready to Transform Your Life?
                 </h2>
                 <p className="text-lg md:text-xl text-gray-300 font-medium">
@@ -200,7 +200,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
                 {/* <h3 className="text-2xl md:text-3xl font-black mb-2 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                   IntoKine
                 </h3> */}
-                <img src="./images/intokine_full_name_logo.png" style={{ width: '200px' , height: 'auto'}}></img>
+                <img src="./images/logo-04.png" style={{ width: '200px' , height: 'auto'}}></img>
                 <p className="text-sm text-gray-400 font-medium">
                   Healthy Fitness Team
                 </p>
@@ -256,7 +256,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-purple-400" />
+                    <MapPin className="w-5 h-5 " />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white mb-1">Visit Us</p>
@@ -268,7 +268,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
 
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-blue-400" />
+                    <Phone className="w-5 h-5 " />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white mb-1">Call Us</p>
@@ -278,7 +278,7 @@ const SmoothScrollHeroWithFooter: React.FC<SmoothScrollHeroProps> = ({
 
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-green-400" />
+                    <Mail className="w-5 h-5 " />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white mb-1">Email Us</p>

@@ -20,7 +20,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <h3 className="text-3xl md:text-4xl font-black tracking-wider text-gray-900 mb-4">WADADA RUN CLUB</h3>
+            <h3 className="text-3xl md:text-4xl font-black tracking-wider text-gray-900 mb-4">Intokine</h3>
             <p className="text-lg text-gray-600 leading-relaxed mb-6 max-w-md">
               Movement isn't an option, it's a lifestyle. Join our global community of runners who believe in pushing
               boundaries and celebrating every step of the journey.
@@ -105,10 +105,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-gray-600" />
                 <a
-                  href="mailto:hello@wadadarun.club"
+                  href="mailto:hello@intokine.com"
                   className="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium"
                 >
-                  hello@wadadarun.club
+                  hello@intokine.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
@@ -117,7 +117,7 @@ export default function Footer() {
                   href="tel:+1876555WADA"
                   className="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium"
                 >
-                  +1 (876) 555-WADA
+                  +971 123456789
                 </a>
               </div>
             </div>

@@ -62,7 +62,7 @@ function useGradientScroll() {
 
   return (
     <TextGradientScrollContext.Provider value={{ textOpacity, type }}>
-      <p
+      <h4
         ref={ref}
         className={cn("relative font-body flex m-0 flex-wrap", className)}
      
@@ -81,7 +81,7 @@ function useGradientScroll() {
             </Letter>
           );
         })}
-      </p>
+      </h4>
     </TextGradientScrollContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
+
 "use client"
 
 import type React from "react"
-
 import { useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Mail, Phone, MessageCircle, Send } from "lucide-react"
@@ -12,10 +12,10 @@ export function AppPromotionSection() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   const appImages = [
-    "/app-dashboard.png",
-    "/app-training-interface.jpg",
-    "/app-community-screen.jpg",
-    "/app-profile-settings.jpg",
+    "./images/app ui-1 (1).png",
+    "./images/app ui-1 (2).png",
+    "./images/app ui-1 (3).png",
+    "./images/app ui-1 (4).png",
   ]
 
   const contactOptions = [
@@ -110,7 +110,7 @@ export function AppPromotionSection() {
                   boxShadow: "0 15px 40px rgba(0,0,0,0.12), 0 5px 15px rgba(0,0,0,0.08)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = "0 40px 100px rgba(0,0,0,0.3), 0 20px 50px rgba(0,0,0,0.2)";
+                  e.currentTarget.style.boxShadow = "0 40px 100px rgba(0, 0, 0, 0), 0 20px 50px rgba(0, 0, 0, 0)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = "0 15px 40px rgba(0,0,0,0.12), 0 5px 15px rgba(0,0,0,0.08)";

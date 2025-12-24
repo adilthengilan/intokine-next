@@ -121,12 +121,12 @@ body {
 h1, h2, h3 {
   font-family: var(--font-header);
   font-weight: 1000; /* Bold */
-  letter-spacing: -0.02em;
+  letter-spacing: 0.00em;
 }
 
 h4, h5, h6 {
-  font-family: var(--font-subheader);
-  font-weight: 600; /* Bold */
+  font-family: var(--font-body);
+  font-weight: 500; /* Bold */
   letter-spacing: -0.02em;
 }
 
@@ -134,11 +134,11 @@ h4, h5, h6 {
 .subheader,
 .text-subheader {
   font-family: var(--font-subheader);
-  font-weight: 600; /* SemiBold */
+  font-weight: 500; /* SemiBold */
 }
 
 /* Paragraph styles */
-p,span,li {
+p{
   font-family: var(--font-body);
   font-weight: 300; /* Light */
 }

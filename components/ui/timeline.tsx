@@ -108,7 +108,7 @@ function TimelineItem({ entry, index, scrollProgress }: TimelineItemProps) {
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-header tracking-wide text-gray-900">
                   {entry.title}
                 </h3>
-                <p className="text-lg md:text-xl font-body leading-relaxed text-gray-700 max-w-lg">{entry.description}</p>
+                <h4 className="text-lg md:text-xl font-body leading-relaxed text-gray-700 max-w-lg">{entry.description}</h4>
               </motion.div>
             </div>
           </div>

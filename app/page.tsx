@@ -298,7 +298,7 @@ Outcome: Sustainable health and energy that supports your training and life goal
       <CoachesSection />
 
       {/* Features Section */}
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
 
       {/* Sports Tracking Section */}
       <SportsTrackingSection />
