@@ -94,7 +94,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-6xl md:text-8xl font-black tracking-tight mb-6">
+            <h1 className="text-6xl md:text-8xl font-header tracking-tight mb-6">
               TRAIN YOUR WAY
             </h1>
             <p className="text-xl md:text-2xl font-light text-gray-200 leading-relaxed">
@@ -116,7 +116,7 @@ export default function Page() {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 id="intro-heading" className="text-5xl md:text-7xl font-black tracking-tight text-black mb-8">
+              <h2 id="intro-heading" className="text-5xl md:text-7xl font-header tracking-tight text-black mb-8">
                 YOUR FITNESS,<br />YOUR RULES
               </h2>
               <div className="w-24 h-1 bg-black mx-auto" aria-hidden="true" />
@@ -151,10 +151,10 @@ export default function Page() {
                   <div className={`ml-20 md:ml-0 ${index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
                     <div className="bg-neutral-50 p-8 border-l-4 border-black">
                       <div className="flex items-center gap-4 mb-4">
-                        <span className="text-5xl md:text-6xl font-black text-black/10" aria-hidden="true">
+                        <span className="text-5xl md:text-6xl font-header text-black/10" aria-hidden="true">
                           {step.number}
                         </span>
-                        <h3 className="text-2xl md:text-3xl font-black tracking-tight text-black">
+                        <h3 className="text-2xl md:text-3xl font-header tracking-tight text-black">
                           {step.title}
                         </h3>
                       </div>
@@ -179,7 +179,7 @@ export default function Page() {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 id="programs-heading" className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6">
+              <h2 id="programs-heading" className="text-4xl md:text-6xl font-header tracking-tight text-white mb-6">
                 CHOOSE YOUR PATH
               </h2>
               <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -227,7 +227,7 @@ export default function Page() {
                       <p className="text-sm font-bold tracking-widest text-gray-300 mb-2">
                         {program.category}
                       </p>
-                      <h3 id={`program-${program.id}-title`} className="text-4xl font-black mb-4 tracking-tight">
+                      <h3 id={`program-${program.id}-title`} className="text-4xl font-header mb-4 tracking-tight">
                         {program.title}
                       </h3>
                       <p className="text-gray-200 text-lg mb-6 leading-relaxed">
@@ -276,7 +276,7 @@ export default function Page() {
               viewport={{ once: true }}
               className="text-center mb-20"
             >
-              <h2 id="benefits-heading" className="text-4xl md:text-6xl font-black tracking-tight mb-6">
+              <h2 id="benefits-heading" className="text-4xl md:text-6xl font-header tracking-tight mb-6">
                 WHY INTOKINE CLUB
               </h2>
               <div className="w-24 h-1 bg-black mx-auto" aria-hidden="true" />
@@ -337,7 +337,7 @@ export default function Page() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 id="cta-heading" className="text-5xl md:text-7xl font-black tracking-tight mb-8">
+              <h2 id="cta-heading" className="text-5xl md:text-7xl font-header tracking-tight mb-8">
                 READY TO START?
               </h2>
               <p className="text-xl text-gray-300 mb-12 leading-relaxed">
@@ -360,7 +360,7 @@ export default function Page() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-2xl font-black mb-4">INTOKINE CLUB</h3>
+              <h3 className="text-2xl font-header mb-4">INTOKINE CLUB</h3>
               <p className="text-gray-400 text-sm">
                 Transform your fitness journey with expert coaching and community support.
               </p>

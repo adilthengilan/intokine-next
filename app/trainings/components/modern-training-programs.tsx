@@ -54,7 +54,7 @@ function ProgramCard({ program, index }: ProgramCardProps) {
           <p className="text-sm md:text-base font-bold tracking-widest text-gray-300 mb-2 uppercase">
             {program.subtitle}
           </p>
-          <h3 className="text-3xl md:text-4xl font-black tracking-wider mb-4">{program.title}</h3>
+          <h3 className="text-3xl md:text-4xl font-header tracking-wider mb-4">{program.title}</h3>
         </motion.div>
 
         {/* Items List with stagger */}
@@ -185,7 +185,7 @@ export default function ModernTrainingPrograms() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-7xl font-black tracking-wider text-white mb-6">TRAINING PROGRAMS</h2>
+          <h2 className="text-5xl md:text-7xl font-header tracking-wider text-white mb-6">TRAINING PROGRAMS</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6" />
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
             Choose your path. Master your pace. Own your journey.

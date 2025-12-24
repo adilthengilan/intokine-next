@@ -71,7 +71,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-4xl md:text-7xl font-black tracking-wider mb-4 text-balance">TRAIN YOUR WAY</h1>
+            <h1 className="text-4xl md:text-7xl font-header tracking-wider mb-4 text-balance">TRAIN YOUR WAY</h1>
             <p className="text-lg md:text-2xl font-light tracking-wide text-gray-200">
               Choose the training style that fits your goals
             </p>
@@ -92,7 +92,7 @@ export default function Page() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-6xl font-black tracking-wider text-black mb-6 text-balance">OUR JOURNEY</h2>
+            <h2 className="text-4xl md:text-6xl font-header tracking-wider text-black mb-6 text-balance">OUR JOURNEY</h2>
             <div className="w-20 h-1 bg-black mx-auto mb-6" />
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
               From passion to excellence – explore the milestones that make Intokine Club special

@@ -23,7 +23,7 @@ export default function CTASection() {
           className="text-center max-w-4xl mx-auto"
         >
           {/* Main CTA Heading */}
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-wider mb-6 text-gray-900 leading-none">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-header tracking-wider mb-6 text-gray-900 leading-none">
             UNLOCK YOUR
             <br />
             <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
@@ -54,7 +54,7 @@ export default function CTASection() {
                   <Users className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Holistic</div>
+              <div className="text-3xl md:text-4xl font-header text-gray-900 mb-1">Holistic</div>
               <div className="text-sm md:text-base text-gray-600 font-medium">
                 Mind–Body Integration
               </div>
@@ -66,7 +66,7 @@ export default function CTASection() {
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Movement</div>
+              <div className="text-3xl md:text-4xl font-header text-gray-900 mb-1">Movement</div>
               <div className="text-sm md:text-base text-gray-600 font-medium">
                 Fitness & Martial Arts
               </div>
@@ -78,7 +78,7 @@ export default function CTASection() {
                   <Calendar className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Lifestyle</div>
+              <div className="text-3xl md:text-4xl font-header text-gray-900 mb-1">Lifestyle</div>
               <div className="text-sm md:text-base text-gray-600 font-medium">
                 Daily Habit Design
               </div>
@@ -90,7 +90,7 @@ export default function CTASection() {
                   <Trophy className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <div className="text-3xl md:text-4xl font-black text-gray-900 mb-1">Growth</div>
+              <div className="text-3xl md:text-4xl font-header text-gray-900 mb-1">Growth</div>
               <div className="text-sm md:text-base text-gray-600 font-medium">
                 Personal Transformation
               </div>
