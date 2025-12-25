@@ -1,7 +1,8 @@
 // src/app/admin/content/page.tsx
-import Link from "next/link";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-import { cookies } from "next/headers";
+import Link from "next/link";
 
 import {
   Image as ImageIcon,
@@ -9,6 +10,7 @@ import {
   ListChecks,
   MessageSquare,
   ArrowRight,
+  Layers,
 } from "lucide-react";
 
 const cards = [
@@ -18,6 +20,13 @@ const cards = [
     desc: "Manage featured images and titles displayed in the App Branding section.",
     icon: ImageIcon,
     color: "from-purple-500 to-pink-500",
+  },
+  {
+    href: "/admin/content/training-programs",
+    title: "Training Programs",
+    desc: "Manage programs shown on the Services page (cards + bullet items).",
+    icon: Layers,
+    color: "from-black to-gray-700",
   },
   {
     href: "/admin/content/run-categories",

@@ -10,11 +10,17 @@ import {
   MapPinned,
   MessageSquare,
   LayoutDashboard,
+  Layers,
 } from "lucide-react";
 
 const SECTIONS = [
   { href: "/admin/content", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/content/branding", label: "Services", icon: ImageIcon },
+  {
+    href: "/admin/content/training-programs",
+    label: "Training Programs",
+    icon: Layers,
+  },
   {
     href: "/admin/content/run-categories",
     label: "Run Categories",

@@ -1,17 +1,18 @@
-"use client"
+// app/services/components/training-programs/program-card.tsx
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 interface ProgramCardProps {
   program: {
-    id: string
-    title: string
-    subtitle: string
-    image: string
-    items: Array<{ name: string; desc: string }>
-    color: string
-  }
-  index: number
+    id: string;
+    title: string;
+    subtitle: string;
+    image: string;
+    items: Array<{ name: string; desc: string }>;
+    color: string;
+  };
+  index: number;
 }
 
 export default function ProgramCard({ program, index }: ProgramCardProps) {
@@ -53,7 +54,9 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
           <p className="text-sm md:text-base font-bold tracking-widest text-gray-300 mb-2 uppercase">
             {program.subtitle}
           </p>
-          <h3 className="text-3xl md:text-4xl font-black tracking-wider mb-4">{program.title}</h3>
+          <h3 className="text-3xl md:text-4xl font-black tracking-wider mb-4">
+            {program.title}
+          </h3>
         </motion.div>
 
         {/* Items List with stagger */}
@@ -99,5 +102,5 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
       {/* Hover Overlay Effect */}
       <motion.div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none" />
     </motion.div>
-  )
+  );
 }
