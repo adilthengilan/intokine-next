@@ -1,14 +1,15 @@
-"use client"
+// app/trainings/app/page.tsx
+"use client";
 
-import { motion } from "framer-motion"
-import TestimonialsSection from "@/components/testimonials-section"
-import { Timeline } from "@/components/ui/timeline"
-import CTASection from "@/components/cta-section"
-import SmoothScrollHero from "@/components/ui/smooth-scroll-hero"
-import Chatbot from "../components/chatbot"
-import LocationsSection from "@/components/locations-section"
-import ModernTrainingPrograms from "../components/modern-training-programs"
-import Header from "../components/header"
+import { motion } from "framer-motion";
+import TestimonialsSection from "@/components/testimonials-section";
+import { Timeline } from "@/components/ui/timeline";
+import CTASection from "@/components/cta-section";
+import SmoothScrollHero from "@/components/ui/smooth-scroll-hero";
+import Chatbot from "../components/chatbot";
+import LocationsSection from "@/components/locations-section";
+import ModernTrainingPrograms from "../components/training-programs";
+import Header from "../components/header";
 
 export default function Page() {
   const timelineEntries = [
@@ -48,7 +49,7 @@ export default function Page() {
         "Be part of a global community of runners. Share experiences, celebrate victories, and grow together as we chase our running dreams.",
       layout: "right" as const,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white grain-base">
@@ -71,7 +72,9 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-4xl md:text-7xl font-header tracking-wider mb-4 text-balance">TRAIN YOUR WAY</h1>
+            <h1 className="text-4xl md:text-7xl font-header tracking-wider mb-4 text-balance">
+              TRAIN YOUR WAY
+            </h1>
             <p className="text-lg md:text-2xl font-light tracking-wide text-gray-200">
               Choose the training style that fits your goals
             </p>
@@ -92,10 +95,13 @@ export default function Page() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-6xl font-header tracking-wider text-black mb-6 text-balance">OUR JOURNEY</h2>
+            <h2 className="text-4xl md:text-6xl font-header tracking-wider text-black mb-6 text-balance">
+              OUR JOURNEY
+            </h2>
             <div className="w-20 h-1 bg-black mx-auto mb-6" />
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-              From passion to excellence – explore the milestones that make Intokine Club special
+              From passion to excellence – explore the milestones that make
+              Intokine Club special
             </p>
           </motion.div>
         </div>
@@ -119,5 +125,5 @@ export default function Page() {
 
       {/* <Chatbot /> */}
     </div>
-  )
+  );
 }

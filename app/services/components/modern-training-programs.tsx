@@ -1,3 +1,4 @@
+// app/services/components/modern-training-programs.tsx
 "use client";
 
 import { motion, useScroll } from "framer-motion";

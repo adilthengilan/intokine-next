@@ -27,8 +27,8 @@ function cldFill(url: string, w: number, h: number) {
 }
 
 export default function RunCategoriesSection() {
-    const router = useRouter();
-  
+  const router = useRouter();
+
   const [items, setItems] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -158,9 +158,9 @@ export default function RunCategoriesSection() {
                     variants={itemVariants}
                     whileHover={{ y: -16 }}
                     className="flex flex-col group relative"
-                    onClick={() =>{
-                      setSelectedId(category.id)
-                      router.push('services/app')
+                    onClick={() => {
+                      setSelectedId(category.id);
+                      router.push(`/services/app?cat=${category.id}`);
                     }}
                   >
                     <div

@@ -8,7 +8,7 @@ import CTASection from "@/components/cta-section";
 import SmoothScrollHero from "@/components/ui/smooth-scroll-hero";
 import Chatbot from "../components/chatbot";
 import LocationsSection from "@/components/locations-section";
-import ModernTrainingPrograms from "../components/training-programs";
+import ModernServices from "../components/services";
 import Header from "../components/header";
 
 export default function Page() {
@@ -82,7 +82,7 @@ export default function Page() {
         </div>
       </section>
 
-      <ModernTrainingPrograms />
+      <ModernServices />
 
       <LocationsSection />
 

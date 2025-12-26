@@ -1,10 +1,13 @@
-// app/trainings/components/training-programs/program-card.tsx
+// app/services/components/services/service-card.tsx
 "use client";
 
 import { motion } from "framer-motion";
 
-interface ProgramCardProps {
-  program: {
+export default function ServiceCard({
+  service,
+  index,
+}: {
+  service: {
     id: string;
     title: string;
     subtitle: string;
@@ -13,9 +16,7 @@ interface ProgramCardProps {
     color: string;
   };
   index: number;
-}
-
-export default function ProgramCard({ program, index }: ProgramCardProps) {
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -24,26 +25,21 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
       viewport={{ once: true }}
       className="group relative h-96 md:h-[450px] rounded-2xl overflow-hidden cursor-pointer grain-overlay"
     >
-      {/* Image Background */}
       <motion.div
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(${program.image})`,
+          backgroundImage: `url(${service.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
 
       <div
-        className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-0 group-hover:opacity-70 transition-opacity duration-500`}
+        className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-0 group-hover:opacity-70 transition-opacity duration-500`}
       />
-
-      {/* Dark base overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
-      {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 text-white">
-        {/* Title Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,14 +48,13 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
           className="mb-6"
         >
           <p className="text-sm md:text-base font-bold tracking-widest text-gray-300 mb-2 uppercase">
-            {program.subtitle}
+            {service.subtitle}
           </p>
           <h3 className="text-3xl md:text-4xl font-black tracking-wider mb-4">
-            {program.title}
+            {service.title}
           </h3>
         </motion.div>
 
-        {/* Items List with stagger */}
         <motion.div
           className="space-y-2 mb-6"
           initial={{ opacity: 0 }}
@@ -67,7 +62,7 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          {program.items.map((item, i) => (
+          {service.items.map((item, i) => (
             <motion.div
               key={i}
               className="flex items-start gap-3 group/item"
@@ -85,7 +80,6 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
           ))}
         </motion.div>
 
-        {/* CTA Button */}
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -99,7 +93,6 @@ export default function ProgramCard({ program, index }: ProgramCardProps) {
         </motion.button>
       </div>
 
-      {/* Hover Overlay Effect */}
       <motion.div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none" />
     </motion.div>
   );

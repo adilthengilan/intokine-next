@@ -10,21 +10,26 @@ import {
   MapPinned,
   MessageSquare,
   LayoutDashboard,
-  Layers,
+  Blocks,
 } from "lucide-react";
 
 const SECTIONS = [
   { href: "/admin/content", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/content/branding", label: "Services", icon: ImageIcon },
+  { href: "/admin/content/branding", label: "Branding", icon: ImageIcon },
   {
     href: "/admin/content/training-programs",
-    label: "Training Programs",
-    icon: Layers,
+    label: "Services",
+    icon: Blocks,
   },
   {
     href: "/admin/content/run-categories",
-    label: "Run Categories",
+    label: "Service Categories",
     icon: ListChecks,
+  },
+  {
+    href: "/admin/content/services",
+    label: "Run Services",
+    icon: Blocks,
   },
   { href: "/admin/content/coaches", label: "Coaches", icon: Users },
   {
@@ -34,7 +39,6 @@ const SECTIONS = [
   },
   { href: "/admin/content/locations", label: "Locations", icon: MapPinned },
 ];
-
 export default function AdminContentNav() {
   const pathname = usePathname();
   return (
