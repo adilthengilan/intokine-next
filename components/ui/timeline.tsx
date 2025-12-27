@@ -1,31 +1,31 @@
-"use client"
+// components/ui/timeline.tsx
+"use client";
 
-import { useScroll, useTransform, motion } from "framer-motion"
-import { useRef } from "react"
-import { cn } from "@/lib/utils"
+import { useScroll, useTransform, motion } from "framer-motion";
+import { useRef } from "react";
+import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
-
 interface TimelineEntry {
-  id: number
-  image: string
-  alt: string
-  title: string
-  description: string
-  layout: "left" | "right"
+  id: number;
+  image: string;
+  alt: string;
+  title: string;
+  description: string;
+  layout: "left" | "right";
 }
 
 interface TimelineProps {
-  entries: TimelineEntry[]
-  className?: string
+  entries: TimelineEntry[];
+  className?: string;
 }
 
 export function Timeline({ entries, className }: TimelineProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
-  })
+  });
 
   return (
     <div ref={containerRef} className={cn("relative", className)}>
@@ -33,43 +33,60 @@ export function Timeline({ entries, className }: TimelineProps) {
       <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 transform -translate-x-1/2 hidden md:block" />
 
       {entries.map((entry, index) => (
-        <TimelineItem key={entry.id} entry={entry} index={index} scrollProgress={scrollYProgress} />
+        <TimelineItem
+          key={entry.id}
+          entry={entry}
+          index={index}
+          scrollProgress={scrollYProgress}
+        />
       ))}
     </div>
-  )
+  );
 }
 
 interface TimelineItemProps {
-  entry: TimelineEntry
-  index: number
-  scrollProgress: any
+  entry: TimelineEntry;
+  index: number;
+  scrollProgress: any;
 }
 
 function TimelineItem({ entry, index, scrollProgress }: TimelineItemProps) {
   const router = useRouter();
-  const itemRef = useRef<HTMLDivElement>(null)
+  const itemRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: itemProgress } = useScroll({
     target: itemRef,
     offset: ["start center", "end center"],
-  })
+  });
 
-  const opacity = useTransform(itemProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3])
-  const scale = useTransform(itemProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8])
+  const opacity = useTransform(
+    itemProgress,
+    [0, 0.3, 0.7, 1],
+    [0.3, 1, 1, 0.3]
+  );
+  const scale = useTransform(itemProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
 
-  const isLeft = entry.layout === "left"
+  const isLeft = entry.layout === "left";
 
   return (
-    <motion.div ref={itemRef} style={{ opacity, scale }} className="relative mb-20 md:mb-32" onClick={ ()=>{
-      router.push(`experiences/app`);
-    }}>
+    <motion.div
+      ref={itemRef}
+      style={{ opacity, scale }}
+      className="relative mb-20 md:mb-32"
+      onClick={() => {
+        router.push(`experiences/app`);
+      }}
+    >
       {/* Timeline Dot */}
       <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-gray-900 rounded-full transform -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block" />
 
       <div className="container mx-auto px-6">
         <div
-          className={cn("grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center", {
-            "md:text-right": isLeft,
-          })}
+          className={cn(
+            "grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center",
+            {
+              "md:text-right": isLeft,
+            }
+          )}
         >
           {/* Image */}
           <div
@@ -108,12 +125,14 @@ function TimelineItem({ entry, index, scrollProgress }: TimelineItemProps) {
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-header tracking-wide text-gray-900">
                   {entry.title}
                 </h3>
-                <h4 className="text-lg md:text-xl font-body leading-relaxed text-gray-700 max-w-lg">{entry.description}</h4>
+                <h4 className="text-lg md:text-xl font-body leading-relaxed text-gray-700 max-w-lg">
+                  {entry.description}
+                </h4>
               </motion.div>
             </div>
           </div>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

@@ -57,6 +57,13 @@ const cards = [
     icon: MessageSquare,
     color: "from-indigo-500 to-purple-500",
   },
+  {
+    href: "/admin/content/experiences",
+    title: "Experiences",
+    desc: "Manage timeline experiences shown on homepage.",
+    icon: Blocks,
+    color: "from-gray-900 to-gray-700",
+  },
 ];
 
 export default function ContentHome() {

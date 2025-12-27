@@ -1,6 +1,7 @@
 // app/page.tsx
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import HeroSection from "../hero-section";
 import { TextGradientScroll } from "@/components/ui/text-gradient-scroll";
 import { Timeline } from "@/components/ui/timeline";
@@ -18,198 +19,268 @@ import { SportsTrackingSection } from "@/components/sports-tracking-section";
 import LocationsSection from "@/components/locations-section";
 import { prisma } from "@/lib/prisma";
 
+type ExperienceDTO = {
+  id: string;
+  title: string;
+  subtitle?: string | null;
+  description?: string | null;
+  imageUrl?: string | null;
+  layout: "left" | "right" | string;
+  items: Array<{ id: string; name: string; desc: string; order: number }>;
+};
+
+type TimelineEntry = {
+  id: number;
+  image: string;
+  alt: string;
+  title: string;
+  description: string;
+  layout: "left" | "right";
+};
+
+function buildDescription(exp: ExperienceDTO) {
+  if (exp.description?.trim()) return exp.description;
+
+  const bullets = [...(exp.items ?? [])]
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+    .map((x) => `• ${x.name}${x.desc ? ` — ${x.desc}` : ""}`)
+    .join("\n");
+
+  return bullets || "";
+}
+
 export default function Page() {
   const missionStatement =
     "Founded on the belief that true wellness comes from balance — Intokine bridges the worlds of performance training and human development.We blend ancient movement practices with modern training science to build not only stronger bodies but also resilient, adaptable, and self-aware individuals.";
 
-  const timelineEntries = [
-    {
-      id: 1,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-      alt: "Zaki – The Intokine Wellness System",
-      title: "ZAKI – The Intokine Wellness System",
-      description: `
-Zaki is our flagship holistic wellness program — a complete journey of physical, mental, and emotional transformation.
+  const [expLoading, setExpLoading] = useState(true);
+  const [expError, setExpError] = useState<string | null>(null);
+  const [experiences, setExperiences] = useState<ExperienceDTO[]>([]);
 
-Combining fitness, mindfulness, nutrition, and mindset coaching, Zaki helps you reconnect with your body, reset your habits, and restore balance in your everyday life.
+  useEffect(() => {
+    let alive = true;
 
-Includes:
-• Physical fitness training & mobility practice
-• Personalized nutrition & recovery guidance
-• Mental health and emotional resilience sessions
-• Lifestyle structure & goal alignment support
+    async function load() {
+      setExpLoading(true);
+      setExpError(null);
+      try {
+        const res = await fetch("/api/experiences", { cache: "no-store" });
+        const json = await res.json();
+        if (!alive) return;
+        setExperiences(json.items ?? []);
+      } catch (e: any) {
+        if (!alive) return;
+        setExpError(e?.message ?? "Failed to load experiences");
+      } finally {
+        if (alive) setExpLoading(false);
+      }
+    }
 
-Outcome: A grounded, stronger, and more self-aware version of you — living with clarity and purpose.
-    `,
-      layout: "left" as const,
-    },
+    load();
+    return () => {
+      alive = false;
+    };
+  }, []);
 
-    {
-      id: 2,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-      alt: "Calisthenics Training",
-      title: "Calisthenics Training",
-      description: `
-Master your own bodyweight through strength, control, and creativity.
+  const timelineEntries: TimelineEntry[] = useMemo(() => {
+    return (experiences ?? []).map((exp, idx) => ({
+      id: idx + 1,
+      image: exp.imageUrl ?? "/placeholder.svg",
+      alt: exp.title,
+      title: exp.title,
+      description: buildDescription(exp),
+      layout: exp.layout === "right" ? "right" : "left",
+    }));
+  }, [experiences]);
 
-Our Calisthenics Program builds functional strength, mobility, and coordination — from fundamentals to advanced bodyweight skills.
+  //   const timelineEntries = [
+  //     {
+  //       id: 1,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+  //       alt: "Zaki – The Intokine Wellness System",
+  //       title: "ZAKI – The Intokine Wellness System",
+  //       description: `
+  // Zaki is our flagship holistic wellness program — a complete journey of physical, mental, and emotional transformation.
 
-Focus Areas:
-• Progressive bodyweight strength
-• Core stability and endurance
-• Movement flow and balance
+  // Combining fitness, mindfulness, nutrition, and mindset coaching, Zaki helps you reconnect with your body, reset your habits, and restore balance in your everyday life.
 
-Outcome: Power, precision, and full control over your body.
-    `,
-      layout: "right" as const,
-    },
+  // Includes:
+  // • Physical fitness training & mobility practice
+  // • Personalized nutrition & recovery guidance
+  // • Mental health and emotional resilience sessions
+  // • Lifestyle structure & goal alignment support
 
-    {
-      id: 3,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-      alt: "Martial Arts",
-      title: "Martial Arts",
-      description: `
-Discipline the mind, condition the body, and find your flow through martial practice.
+  // Outcome: A grounded, stronger, and more self-aware version of you — living with clarity and purpose.
+  //     `,
+  //       layout: "left" as const,
+  //     },
 
-We blend traditional and modern martial arts — including kickboxing, kung fu, and combat movement — to develop both physical resilience and mental sharpness.
+  //     {
+  //       id: 2,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+  //       alt: "Calisthenics Training",
+  //       title: "Calisthenics Training",
+  //       description: `
+  // Master your own bodyweight through strength, control, and creativity.
 
-Focus Areas:
-• Striking, defense, and movement flow
-• Mind-body coordination
-• Emotional control and confidence
+  // Our Calisthenics Program builds functional strength, mobility, and coordination — from fundamentals to advanced bodyweight skills.
 
-Outcome: A warrior mindset built on discipline, focus, and respect.
-    `,
-      layout: "left" as const,
-    },
+  // Focus Areas:
+  // • Progressive bodyweight strength
+  // • Core stability and endurance
+  // • Movement flow and balance
 
-    {
-      id: 4,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-      alt: "Animal Flow",
-      title: "Animal Flow",
-      description: `
-Animal Flow is a ground-based bodyweight movement system that blends quadrupedal locomotion, mobility drills, positional isometrics, and fluid transitions to build strength, stability, and body control.
+  // Outcome: Power, precision, and full control over your body.
+  //     `,
+  //       layout: "right" as const,
+  //     },
 
-It develops full-body coordination and proprioception.
+  //     {
+  //       id: 3,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+  //       alt: "Martial Arts",
+  //       title: "Martial Arts",
+  //       description: `
+  // Discipline the mind, condition the body, and find your flow through martial practice.
 
-• Builds core stability and hip/shoulder resilience through load-bearing positions.
-• Improves mobility and joint health in functional ranges.
-• Trains movement efficiency and fluidity rather than isolated muscles.
-    `,
-      layout: "right" as const,
-    },
+  // We blend traditional and modern martial arts — including kickboxing, kung fu, and combat movement — to develop both physical resilience and mental sharpness.
 
-    {
-      id: 5,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-      alt: "Functional Movement Training",
-      title: "Functional Movement Training",
-      description: `
-Move better to live better.
+  // Focus Areas:
+  // • Striking, defense, and movement flow
+  // • Mind-body coordination
+  // • Emotional control and confidence
 
-This program focuses on improving your everyday movement efficiency, posture, and joint stability — blending training science with human movement principles.
+  // Outcome: A warrior mindset built on discipline, focus, and respect.
+  //     `,
+  //       layout: "left" as const,
+  //     },
 
-Focus Areas:
-• Mobility, balance, and coordination
-• Injury prevention & posture correction
-• Real-world performance movement
+  //     {
+  //       id: 4,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+  //       alt: "Animal Flow",
+  //       title: "Animal Flow",
+  //       description: `
+  // Animal Flow is a ground-based bodyweight movement system that blends quadrupedal locomotion, mobility drills, positional isometrics, and fluid transitions to build strength, stability, and body control.
 
-Outcome: Enhanced functionality and freedom of motion in all aspects of life.
-    `,
-      layout: "left" as const,
-    },
+  // It develops full-body coordination and proprioception.
 
-    {
-      id: 6,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-      alt: "Strength & Conditioning",
-      title: "Strength & Conditioning",
-      description: `
-Engineered for athletes and everyday performers alike.
+  // • Builds core stability and hip/shoulder resilience through load-bearing positions.
+  // • Improves mobility and joint health in functional ranges.
+  // • Trains movement efficiency and fluidity rather than isolated muscles.
+  //     `,
+  //       layout: "right" as const,
+  //     },
 
-Our Strength & Conditioning Program builds endurance, power, and athletic capacity — the foundation of high-level physical performance.
+  //     {
+  //       id: 5,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+  //       alt: "Functional Movement Training",
+  //       title: "Functional Movement Training",
+  //       description: `
+  // Move better to live better.
 
-Focus Areas:
-• Power development and hypertrophy
-• Endurance and conditioning systems
-• Recovery optimization
+  // This program focuses on improving your everyday movement efficiency, posture, and joint stability — blending training science with human movement principles.
 
-Outcome: Peak strength, improved stamina, and high-performance capability.
-    `,
-      layout: "right" as const,
-    },
+  // Focus Areas:
+  // • Mobility, balance, and coordination
+  // • Injury prevention & posture correction
+  // • Real-world performance movement
 
-    {
-      id: 7,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
-      alt: "Mental Health Support",
-      title: "Mental Health Support",
-      description: `
-True strength starts within.
+  // Outcome: Enhanced functionality and freedom of motion in all aspects of life.
+  //     `,
+  //       layout: "left" as const,
+  //     },
 
-Our Mental Health Support program integrates emotional awareness, mindset training, and stress management to help you build resilience, focus, and peace of mind.
+  //     {
+  //       id: 6,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+  //       alt: "Strength & Conditioning",
+  //       title: "Strength & Conditioning",
+  //       description: `
+  // Engineered for athletes and everyday performers alike.
 
-Focus Areas:
-• Emotional intelligence & mindfulness
-• Stress reduction and self-awareness
-• Goal alignment and motivation systems
+  // Our Strength & Conditioning Program builds endurance, power, and athletic capacity — the foundation of high-level physical performance.
 
-Outcome: A calmer, more focused, and mentally balanced you.
-    `,
-      layout: "left" as const,
-    },
+  // Focus Areas:
+  // • Power development and hypertrophy
+  // • Endurance and conditioning systems
+  // • Recovery optimization
 
-    {
-      id: 8,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
-      alt: "Ventures Development Training",
-      title: "Ventures Development Training",
-      description: `
-Train not just for the body — but for life.
+  // Outcome: Peak strength, improved stamina, and high-performance capability.
+  //     `,
+  //       layout: "right" as const,
+  //     },
 
-This Intokine module develops leadership, creativity, and performance in real-world ventures — ideal for athletes, entrepreneurs, and community leaders.
+  //     {
+  //       id: 7,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RJ3iTXUn5SUexF6nHMZYhMoQLNCboK.png",
+  //       alt: "Mental Health Support",
+  //       title: "Mental Health Support",
+  //       description: `
+  // True strength starts within.
 
-Focus Areas:
-• Leadership and purpose-driven growth
-• Teamwork, communication, and innovation
-• Resilience and adaptability
+  // Our Mental Health Support program integrates emotional awareness, mindset training, and stress management to help you build resilience, focus, and peace of mind.
 
-Outcome: A mindset built for progress — professionally and personally.
-    `,
-      layout: "right" as const,
-    },
+  // Focus Areas:
+  // • Emotional intelligence & mindfulness
+  // • Stress reduction and self-awareness
+  // • Goal alignment and motivation systems
 
-    {
-      id: 9,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
-      alt: "Nutrition & Lifestyle Coaching",
-      title: "Nutrition & Lifestyle Coaching",
-      description: `
-Fuel your movement with precision.
+  // Outcome: A calmer, more focused, and mentally balanced you.
+  //     `,
+  //       layout: "left" as const,
+  //     },
 
-Our Nutrition Program teaches you how to eat, recover, and live for long-term vitality — no crash diets, just conscious nourishment.
+  //     {
+  //       id: 8,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LN9OPh9hw0b9rwSPRSslHoejcfoKHe.png",
+  //       alt: "Ventures Development Training",
+  //       title: "Ventures Development Training",
+  //       description: `
+  // Train not just for the body — but for life.
 
-Focus Areas:
-• Personalized nutrition planning
-• Performance-based eating strategies
-• Recovery and lifestyle optimization
+  // This Intokine module develops leadership, creativity, and performance in real-world ventures — ideal for athletes, entrepreneurs, and community leaders.
 
-Outcome: Sustainable health and energy that supports your training and life goals.
-    `,
-      layout: "left" as const,
-    },
-  ];
+  // Focus Areas:
+  // • Leadership and purpose-driven growth
+  // • Teamwork, communication, and innovation
+  // • Resilience and adaptability
+
+  // Outcome: A mindset built for progress — professionally and personally.
+  //     `,
+  //       layout: "right" as const,
+  //     },
+
+  //     {
+  //       id: 9,
+  //       image:
+  //         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1FdGyjVpWQANGzsDWpoPIvF5SVI2za.png",
+  //       alt: "Nutrition & Lifestyle Coaching",
+  //       title: "Nutrition & Lifestyle Coaching",
+  //       description: `
+  // Fuel your movement with precision.
+
+  // Our Nutrition Program teaches you how to eat, recover, and live for long-term vitality — no crash diets, just conscious nourishment.
+
+  // Focus Areas:
+  // • Personalized nutrition planning
+  // • Performance-based eating strategies
+  // • Recovery and lifestyle optimization
+
+  // Outcome: Sustainable health and energy that supports your training and life goals.
+  //     `,
+  //       layout: "left" as const,
+  //     },
+  //   ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -290,7 +361,17 @@ Outcome: Sustainable health and energy that supports your training and life goal
             </motion.div>
           </div>
 
-          <Timeline entries={timelineEntries} />
+          {expLoading ? (
+            <div className="container mx-auto px-6">
+              <div className="h-40 bg-gray-100 rounded-2xl animate-pulse" />
+            </div>
+          ) : expError ? (
+            <div className="container mx-auto px-6 text-center text-red-600">
+              {expError}
+            </div>
+          ) : (
+            <Timeline entries={timelineEntries} />
+          )}
         </div>
       </section>
 

@@ -38,6 +38,7 @@ const SECTIONS = [
     icon: MessageSquare,
   },
   { href: "/admin/content/locations", label: "Locations", icon: MapPinned },
+  { href: "/admin/content/experiences", label: "Experiences", icon: Blocks },
 ];
 export default function AdminContentNav() {
   const pathname = usePathname();
