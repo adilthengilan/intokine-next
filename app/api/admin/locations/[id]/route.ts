@@ -7,7 +7,17 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   const id = params.id;
-  const { city, place, time, description, order, published } = await req.json();
+  const {
+    city,
+    place,
+    time,
+    description,
+    tz,
+    mapLink,
+    imageUrl,
+    order,
+    published,
+  } = await req.json();
 
   const item = await prisma.location.update({
     where: { id },
@@ -16,6 +26,9 @@ export async function PUT(
       ...(place !== undefined ? { place } : {}),
       ...(time !== undefined ? { time } : {}),
       ...(description !== undefined ? { description } : {}),
+      ...(tz !== undefined ? { tz } : {}),
+      ...(mapLink !== undefined ? { mapLink } : {}),
+      ...(imageUrl !== undefined ? { imageUrl } : {}),
       ...(order !== undefined ? { order } : {}),
       ...(published !== undefined ? { published } : {}),
     },

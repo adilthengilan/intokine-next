@@ -14,7 +14,7 @@ type LocationItem = {
   description?: string | null;
   tz?: string | null;
   order: number;
-  image?: string | null;
+  imageUrl?: string | null;
   mapLink?: string | null;
 };
 
@@ -25,9 +25,9 @@ export default function LocationsSection() {
 
   useEffect(() => {
     // Load Mustica Pro font
-    const link = document.createElement('link');
-    link.href = 'https://fonts.cdnfonts.com/css/mustica-pro';
-    link.rel = 'stylesheet';
+    const link = document.createElement("link");
+    link.href = "https://fonts.cdnfonts.com/css/mustica-pro";
+    link.rel = "stylesheet";
     document.head.appendChild(link);
 
     let alive = true;
@@ -84,13 +84,18 @@ export default function LocationsSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center py-32 bg-white overflow-hidden" style={{ fontFamily: "'Mustica Pro', 'Helvetica Neue', Arial, sans-serif" }}>
+    <section
+      className="relative min-h-screen flex items-center py-32 bg-white overflow-hidden"
+      style={{
+        fontFamily: "'Mustica Pro', 'Helvetica Neue', Arial, sans-serif",
+      }}
+    >
       {/* Dark Grain Texture */}
-      <div 
-        className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply" 
-        style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
-        }} 
+      <div
+        className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
       />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -103,7 +108,8 @@ export default function LocationsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-header tracking-wider mb-6 text-black drop-shadow-2xl">
-            FIND YOUR <span className="text-black border-b-4 border-black">LOCATION</span>
+            FIND YOUR{" "}
+            <span className="text-black border-b-4 border-black">LOCATION</span>
           </h2>
           <p className="text-xl md:text-2xl font-body text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Find your next training location
@@ -188,30 +194,32 @@ export default function LocationsSection() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group relative"
               >
-                <div 
-                  onClick={() => loc.mapLink && window.open(loc.mapLink, '_blank')}
-                  className={`h-full border-2 border-white bg-black shadow-2xl hover:shadow-white/20 transition-all duration-300 group-hover:border-white overflow-hidden ${loc.mapLink ? 'cursor-pointer' : ''}`}
+                <div
+                  onClick={() =>
+                    loc.mapLink && window.open(loc.mapLink, "_blank")
+                  }
+                  className={`h-full border-2 border-white bg-black shadow-2xl hover:shadow-white/20 transition-all duration-300 group-hover:border-white overflow-hidden ${
+                    loc.mapLink ? "cursor-pointer" : ""
+                  }`}
                 >
                   {/* Image with gradient overlay */}
-                  {loc.image && (
+                  {loc.imageUrl && (
                     <div className="relative h-48 overflow-hidden">
                       <img
-                        src={loc.image}
+                        src={loc.imageUrl}
                         alt={loc.city}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      
-                      {/* Black gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                     </div>
                   )}
 
                   {/* Grain overlay */}
-                  <div 
+                  <div
                     className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none"
-                    style={{ 
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
-                    }} 
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    }}
                   />
 
                   {/* White accent on hover */}

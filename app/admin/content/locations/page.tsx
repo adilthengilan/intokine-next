@@ -11,6 +11,9 @@ type Item = {
   place: string;
   time: string;
   description?: string | null;
+  tz?: string | null;
+  mapLink?: string | null;
+  imageUrl?: string | null;
   order: number;
   published: boolean;
   createdAt: string;
@@ -48,6 +51,8 @@ function ItemCard({
     place: item.place,
     time: item.time,
     description: item.description ?? "",
+    tz: item.tz ?? "",
+    mapLink: item.mapLink ?? "",
     order: item.order,
     published: item.published,
   });
@@ -58,6 +63,8 @@ function ItemCard({
     form.place !== item.place ||
     form.time !== item.time ||
     (form.description ?? "") !== (item.description ?? "") ||
+    (form.tz ?? "") !== (item.tz ?? "") ||
+    (form.mapLink ?? "") !== (item.mapLink ?? "") ||
     form.order !== item.order ||
     form.published !== item.published;
 
@@ -68,6 +75,8 @@ function ItemCard({
     const patch = diffPatch(item, {
       ...form,
       description: form.description || null,
+      tz: form.tz || null,
+      mapLink: form.mapLink || null,
     });
     if (!Object.keys(patch).length) return;
     setSaving(true);
@@ -85,6 +94,8 @@ function ItemCard({
       place: item.place,
       time: item.time,
       description: item.description ?? "",
+      tz: item.tz ?? "",
+      mapLink: item.mapLink ?? "",
       order: item.order,
       published: item.published,
     });
@@ -155,6 +166,24 @@ function ItemCard({
               placeholder="e.g. Sat 6:00 AM"
             />
           </div>
+        </div>
+
+        {/* Google Maps Link Input */}
+        <div>
+          <label className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Google Maps Link (optional)
+          </label>
+          <input
+            value={form.mapLink}
+            onChange={(e) =>
+              setForm((f) => ({ ...f, mapLink: e.target.value }))
+            }
+            className="w-full mt-1 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="https://maps.google.com/?q=..."
+          />
+          <p className="mt-1 text-xs text-gray-500">
+            Paste a full Google Maps URL. Users will click it on the site.
+          </p>
         </div>
 
         <div>
@@ -243,6 +272,8 @@ export default function AdminLocationsPage() {
   const [place, setPlace] = useState("");
   const [time, setTime] = useState("");
   const [description, setDescription] = useState("");
+  const [tz, setTz] = useState("");
+  const [mapLink, setMapLink] = useState("");
 
   const cityRef = useRef<HTMLInputElement>(null);
 
@@ -272,6 +303,8 @@ export default function AdminLocationsPage() {
           place,
           time,
           description: description || null,
+          tz: tz || null,
+          mapLink: mapLink || null,
           published: true,
         }),
       });
@@ -279,6 +312,8 @@ export default function AdminLocationsPage() {
       setPlace("");
       setTime("");
       setDescription("");
+      setTz("");
+      setMapLink("");
       cityRef.current?.focus();
       toast.success("Location added");
       await load();
@@ -399,7 +434,21 @@ export default function AdminLocationsPage() {
               onChange={(e) => setTime(e.target.value)}
             />
           </div>
-          <div className="space-y-2 md:col-span-2">
+
+          {/* Google Maps Link Input */}
+          <div className="space-y-2 md:col-span-2 lg:col-span-3">
+            <label className="text-sm font-medium text-gray-700">
+              Google Maps Link (optional)
+            </label>
+            <input
+              className="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="https://maps.google.com/?q=..."
+              value={mapLink}
+              onChange={(e) => setMapLink(e.target.value)}
+            />
+          </div>
+
+          <div className="space-y-2 md:col-span-2 lg:col-span-3">
             <label className="text-sm font-medium text-gray-700">
               Description (optional)
             </label>

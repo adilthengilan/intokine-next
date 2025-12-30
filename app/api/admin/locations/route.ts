@@ -13,6 +13,9 @@ export async function POST(req: NextRequest) {
     place,
     time,
     description,
+    tz,
+    mapLink,
+    imageUrl,
     order,
     published = true,
   } = await req.json();
@@ -29,7 +32,17 @@ export async function POST(req: NextRequest) {
     typeof order === "number" ? order : (maxOrder._max.order ?? -1) + 1;
 
   const item = await prisma.location.create({
-    data: { city, place, time, description, order: nextOrder, published },
+    data: {
+      city,
+      place,
+      time,
+      description: description || null,
+      tz: tz || null,
+      mapLink: mapLink || null,
+      imageUrl: imageUrl || null,
+      order: nextOrder,
+      published,
+    },
   });
 
   return NextResponse.json({ item });
