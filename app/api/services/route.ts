@@ -1,4 +1,6 @@
 // src/app/api/services/route.ts
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
