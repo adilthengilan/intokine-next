@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     // Set cookie manually
     res.headers.set(
       "Set-Cookie",
-      `admin_session=true; Path=/; HttpOnly; Max-Age=${60 * 60}` // 1 hour
+      `admin_session=true; Path=/; HttpOnly; Max-Age=${60 * 60}`
     );
     return res;
   }

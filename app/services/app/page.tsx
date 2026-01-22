@@ -1,6 +1,7 @@
 // app/services/app/page.tsx
 "use client";
 
+import { Suspense } from "react";
 import { motion } from "framer-motion";
 import TestimonialsSection from "@/components/testimonials-section";
 import { Timeline } from "@/components/ui/timeline";
@@ -82,7 +83,17 @@ export default function Page() {
         </div>
       </section>
 
-      <ModernServices />
+      <Suspense
+        fallback={
+          <section className="relative py-20 md:py-32 bg-black overflow-hidden grain-overlay">
+            <div className="relative z-10 container mx-auto px-6">
+              <p className="text-center text-gray-400">Loading services...</p>
+            </div>
+          </section>
+        }
+      >
+        <ModernServices />
+      </Suspense>
 
       <LocationsSection />
 
